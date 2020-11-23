@@ -1,0 +1,210 @@
+/*START NAV*/
+.bg-light{
+    background:#000 !important;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+    color:#fff700;
+    cursor:pointer;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-brand:hover{
+    background:#fff700;
+    color:#000;
+}
+
+.navbar-light .navbar-nav .nav-link:active, .navbar-light .navbar-brand:active{
+    color:#fff700;
+}
+
+.navbar-light .navbar-collapse{
+    justify-content:flex-end;
+}
+
+.navbar-light .navbar-toggler{
+    background:#f0f0f0; !important;
+}
+/*END NAV*/
+
+/* START HEADER */
+header{
+    min-height:700px;
+    background-image: url(../img/logo.jpeg);
+    background-size: cover;
+    background-attachment:scroll;
+}
+
+.overlay{
+    position:absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(244,244,244,0.79);
+}
+
+
+.description{
+    position: absolute;
+    top:35%;
+    margin:auto;
+    padding: 2em;
+}
+
+.description h1{
+    color: #1677ab;
+}
+
+.description p{
+    color: #666;
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+/*END HEADER*/
+
+/*START TEAMS*/
+
+.teams{
+    margin: 4em 0;
+}
+
+.teams h1{
+    margin: 2em;
+    padding-left: 40%;
+    color: #1677ab;
+}
+
+.container{
+    margin-top: 30px;
+}
+
+.card {
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    height: 300px;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    background-color: rgba(244,244,244,0);
+}
+
+.flipper {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 10px;
+    perspective: 1000px;
+}
+
+.flipper.flip .card {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    width: 100%;
+    padding: 5px;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    height: 100%;
+}
+
+.back {
+    transform: rotateY(180deg);
+    height: 100%;
+}
+
+.front p, .back p, .palmares li{
+    color:#000;
+    font-size:20px;
+    font-weight:600;
+}
+
+.palmares{
+    list-style:none;
+}
+
+.gold img, .silver img, .bronze img{
+    position: absolute;
+    left: 0;
+}
+
+.dates{
+    list-style: none;
+    min-height: 75px;
+    max-height: 75px;
+}
+
+/*END TEAMS*/
+
+/*START RULES*/
+.rules-list{
+    margin: 4em 0;
+}
+
+.rules-list h1{
+    margin: 2em;
+    padding-left: 17%;
+    color: #1677ab;
+}
+
+.rules{
+    position:absolute;
+    margin:auto;
+    padding: 1em;
+}
+
+.rule{
+    list-style-image:url(../img/icons/football.png);
+}
+
+.rule p{
+    font-size:1.1em;
+    font-weight: 500;
+}
+/*END RULES*/
+
+/*START FOOTER*/
+
+footer{
+    position:absolute;
+    bottom: 0;
+    left: 37%
+}
+
+/*END FOOTER*/
+
+/*START MOBILE*/
+
+@media screen and (max-width:768px){
+
+    .header{
+        background-position: center;
+        background-size:contain;
+        background-repeat: no-repeat;
+    }
+
+    .description h1{
+        font-size:2em;
+    }
+
+    .teams h1{
+        padding-left: 26%;
+        font-size:2em;
+    }
+
+    .rules-list h1{
+        padding-left: 10%;
+        font-size:1.8em;
+    }
+
+    footer{
+        left:7%;
+    }
+}
