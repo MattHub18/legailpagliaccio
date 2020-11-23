@@ -208,3 +208,13 @@ footer{
         left:7%;
     }
 }
+
+@media screen and (max-width:384px){
+
+    .teams h1{
+        padding-left: 18%;
+        font-size:2em;
+    }
+
+}
+
