@@ -126,56 +126,22 @@ header{
     font-weight:600;
 }
 
-.palmares{
-    list-style:none;
-}
-
-.gold img, .silver img, .bronze img{
-    position: absolute;
-    left: 0;
+.row {
+    height : 63px;
 }
 
 .dates{
     list-style: none;
-    min-height: 75px;
-    max-height: 75px;
 }
 
 /*END TEAMS*/
-
-/*START RULES*/
-.rules-list{
-    margin: 4em 0;
-}
-
-.rules-list h1{
-    margin: 2em;
-    padding-left: 17%;
-    color: #1677ab;
-}
-
-.rules{
-    position:absolute;
-    margin:auto;
-    padding: 1em;
-}
-
-.rule{
-    list-style-image:url(../img/icons/football.png);
-}
-
-.rule p{
-    font-size:1.1em;
-    font-weight: 500;
-}
-/*END RULES*/
 
 /*START FOOTER*/
 
 footer{
     position:absolute;
     bottom: 0;
-    left: 37%
+    left: 37%;
 }
 
 /*END FOOTER*/
@@ -197,11 +163,6 @@ footer{
     .teams h1{
         padding-left: 26%;
         font-size:2em;
-    }
-
-    .rules-list h1{
-        padding-left: 10%;
-        font-size:1.8em;
     }
 
     footer{
