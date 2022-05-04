@@ -243,6 +243,19 @@ footer p{
         font-size: 0.8rem;
     }
 
+    .carousel-item .icon-box{
+        width: 150px;
+        height: 150px;
+    }
+
+    .carousel-item .icon-box{
+        font-size: 75px;
+    }
+
+    .carousel-item{
+        margin-top: 0;
+    }
+
 }
 
 
