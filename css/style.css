@@ -232,6 +232,7 @@ header{
     vertical-align: middle;
     color: var(--par-color);
     font-size: 20px;
+    text-transform: none;
 }
 
 .inputBox{
@@ -248,6 +249,7 @@ header{
 .inputBox .comment{
     margin: 3rem auto;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+    text-transform: none;
 }
 
 .comment::placeholder{
