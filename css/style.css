@@ -345,6 +345,10 @@ footer p{
         height: 100px;
     }
 
+    .bl-container .carousel-item p{
+        font-size: 10px;
+    }
+
 }
 
 
