@@ -141,11 +141,11 @@ header{
     font-size:20px;
 }
 
-.carousel-item{
+.back .carousel-item{
     margin-top: 50px;
 }
 
-.carousel-item .icon-box{
+.back .carousel-item .icon-box{
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -175,16 +175,104 @@ header{
     color: #ff0000;
 }
 
-.carousel-item .icon-box{
+.back .carousel-item .icon-box{
     background-color: var(--title-color);
     font-size: 100px;
 }
 
-.carousel-item p{
+.back .carousel-item p{
     margin-top: 20px;
 }
 
 /*END TEAMS*/
+
+/*START BAD LUCK*/
+
+#bad-luck{
+    margin-top: 4rem;
+}
+
+#bad-luck h1{
+    margin: 0 auto;
+    color: var(--title-color);
+    text-align: center;
+}
+
+.bl-container img{
+    display: block;
+    margin: 4rem auto;
+}
+
+
+.bl-container .carousel, .inputBox .comment{
+    display: block;
+    width: 70%;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.bl-container .carousel{
+    text-align: center;
+    margin: 2rem auto;
+    background: linear-gradient(21deg, #00dd06, #1677ab);
+    padding: 3px;
+    line-height: 150px;
+    box-shadow: 0 0 10px 10px rgba(22,119,171,0.5);
+}
+
+.bl-container .carousel-inner{
+    background: #fff;
+    height: 144px;
+    border-radius: 10px;
+}
+
+.bl-container .carousel-item p{
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--par-color);
+    font-size: 20px;
+}
+
+.inputBox{
+    display: block;
+    margin: 2rem auto;
+}
+
+.inputBox h3{
+    margin: 0 auto;
+    color: var(--par-color);
+    text-align: center;
+}
+
+.inputBox .comment{
+    margin: 3rem auto;
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+}
+
+.comment::placeholder{
+    padding: 5px;
+}
+
+.comment[type="text"] {
+    padding: 10px;
+}
+
+.inputBox .btn{
+    display: block;
+    margin: 1rem auto;
+    width: 100px;
+    color: var(--main-color);
+    background-color: var(--desc-color);
+
+}
+
+.inputBox .btn:hover{
+    background-color: var(--main-color);
+    color: var(--desc-color);
+}
+
+/*END BAD LUCK*/
 
 /*START FOOTER*/
 
@@ -210,14 +298,14 @@ footer p{
         font-size: 1.5rem;
     }
 
-    .carousel-item{
+    .back .carousel-item{
         margin-top: 15px;
     }
 }
 
 @media screen and (max-width:1200px){
 
-    .carousel-item{
+    .back .carousel-item{
         margin-top: 50px;
     }
 }
@@ -243,17 +331,18 @@ footer p{
         font-size: 0.8rem;
     }
 
-    .carousel-item .icon-box{
+    .back .carousel-item .icon-box{
         width: 150px;
         height: 150px;
-    }
-
-    .carousel-item .icon-box{
         font-size: 75px;
     }
 
-    .carousel-item{
+    .back .carousel-item{
         margin-top: 0;
+    }
+
+    .inputBox .comment{
+        height: 100px;
     }
 
 }
