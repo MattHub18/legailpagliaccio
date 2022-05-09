@@ -4,15 +4,16 @@
     --main-color:#fff700;
     --title-color:#1677ab;
     --par-color:#666;
+    --bg-color:#343a40;
     --overlay-color:rgba(244,244,244,0.5);
     --desc-color: #000;
+    --white: #fff;
 }
 
 *{
     font-family: 'Exo 2', sans-serif;
     margin: 0;
     padding: 0;
-    text-transform: capitalize;
     outline: none;
     border: none;
     text-decoration: none;
@@ -145,7 +146,7 @@ header{
     margin-top: 50px;
 }
 
-.back .carousel-item .icon-box{
+.back .carousel-item i{
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -153,31 +154,28 @@ header{
     align-items: center;
     justify-content: center;
     margin: auto;
+    background-color: var(--title-color);
+    font-size: 100px;
 }
 
-#gold i{
+#gold{
     color: #d4af37;
 }
 
-#silver i{
+#silver{
     color: #c0c0c0;
 }
 
-#bronze i{
+#bronze{
     color: #cd7f32;
 }
 
-#cup i{
-    color: #e5e4e2;
+#trophy{
+    color: #771cdc;
 }
 
-#none i{
+#none{
     color: #ff0000;
-}
-
-.back .carousel-item .icon-box{
-    background-color: var(--title-color);
-    font-size: 100px;
 }
 
 .back .carousel-item p{
@@ -196,6 +194,7 @@ header{
     margin: 0 auto;
     color: var(--title-color);
     text-align: center;
+    text-transform: none;
 }
 
 .bl-container img{
@@ -279,14 +278,51 @@ header{
 /*START FOOTER*/
 
 footer{
+    background-color: var(--bg-color);
+}
+
+.box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.box-container .box{
+    flex: 1 1 25rem;
+    padding: 20px;
+}
+
+.box-container .box h3{
+    color: var(--white);
+}
+
+.box-container .box p{
+    color: #ddd;
+}
+
+.box-container .box a{
+    color: var(--main-color);
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.box-container .box a:hover{
+    color: var(--title-color);
+    text-decoration: none;
+}
+
+.box-container .box a i{
+    padding-right: 10px;
+}
+
+footer .copy{
     position:absolute;
     bottom: 0;
     left: 0;
     text-align: center;
     width: 100%;
-}
-
-footer p{
     text-transform: lowercase;
 }
 
