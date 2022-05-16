@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500&display=swap');
 
 :root{
-    --main-color:#fff700;
-    --title-color:#1677ab;
-    --par-color:#666;
-    --bg-color:#343a40;
-    --overlay-color:rgba(244,244,244,0.5);
-    --desc-color: #000;
+    --main:#fff700;
+    --title:#1677ab;
+    --par:#666;
+    --bg:#343a40;
+    --overlay:rgba(244,244,244,0.5);
+    --black: #000;
     --white: #fff;
+    --light-bg: #ddd;
 }
 
 *{
@@ -37,13 +38,29 @@ p{
 
 /*START NAV*/
 .navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand {
-    color: var(--main-color) !important;
+    color: var(--main) !important;
     cursor:pointer;
 }
 
+.navbar-dark .navbar-nav .nav-link i{
+    padding-right: 0.5rem;
+}
+
+.navbar-dark .navbar-nav .login, .navbar-dark .navbar-nav .user{
+    display: none;
+}
+
+.navbar-dark .navbar-nav .login.active, .navbar-dark .navbar-nav .user.active {
+    display: block;
+}
+
+.navbar-dark .navbar-nav .user.active i{
+    color: #00ff00;
+}
+
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-brand:hover{
-    background: var(--main-color) !important;
-    color: var(--desc-color) !important;
+    background: var(--main) !important;
+    color: var(--black) !important;
 }
 
 .navbar-dark .navbar-collapse{
@@ -51,13 +68,13 @@ p{
 }
 
 .navbar-dark .navbar-toggler{
-    background: var(--overlay-color) !important;
+    background: var(--overlay) !important;
 }
 /*END NAV*/
 
 /* START HEADER */
 header{
-    background: linear-gradient(var(--overlay-color), var(--overlay-color)), url(../img/logo.png);
+    background: linear-gradient(var(--overlay), var(--overlay)), url(../img/logo.png);
     min-height: 100vh;
     background-size: cover;
     background-position: center;
@@ -74,16 +91,70 @@ header{
 
 
 .description h1{
-    color: var(--title-color);
-    padding: 10px 0;
+    color: var(--title);
+    padding: 1rem 0;
 }
 
 .description p{
-    color: var(--par-color);
+    color: var(--par);
     font-size: 1.3rem;
 }
 
 /*END HEADER*/
+
+/*START SIDENAV*/
+
+.sidenav{
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 56px;
+    right: 0;
+    background-color: var(--bg);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav.active{
+    width: 20%;
+}
+
+.sidenav .container{
+    border-top: 3px solid var(--overlay);
+    width: 90%;
+    display: flex;
+}
+
+.sidenav .container i{
+    margin-left: auto;
+    margin-right: 0;
+    padding: 1rem;
+    color: var(--main);
+    font-size: 3rem;
+}
+
+.sidenav h1{
+    text-align: center;
+    color: var(--title);
+    font-size: 2rem;
+}
+
+.sidenav ul{
+    padding: 1rem;
+    list-style-type: none
+}
+
+.sidenav ul li a{
+    text-decoration: none;
+    color: var(--white);
+}
+
+.sidenav ul li a:hover{
+    color: var(--main);
+}
+
+/*END SIDENAV*/
 
 /*START TEAMS*/
 
@@ -93,7 +164,7 @@ header{
 
 #teams h1{
     margin: 0 auto;
-    color: var(--title-color);
+    color: var(--title);
     text-align: center;
 }
 
@@ -101,14 +172,14 @@ header{
     text-align: center;
     transition: 0.6s;
     transform-style: preserve-3d;
-    border: 3px solid var(--desc-color);
+    border: 3px solid var(--black);
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
 }
 
 .flipper {
     perspective: 1000px;
-    padding: 14px 0;
+    padding: 1.4rem 0;
 }
 
 .flipper.flip .team-card {
@@ -117,7 +188,7 @@ header{
 
 .front, .back {
     width: 100%;
-    padding: 10px;
+    padding: 1rem;
     backface-visibility: hidden;
 }
 
@@ -127,7 +198,7 @@ header{
 }
 
 .front img, .front h3, .back h3{
-    margin-top: 20px;
+    margin-top: 1.7rem;
 }
 
 .back{
@@ -138,12 +209,12 @@ header{
 }
 
 .front p, .back p{
-    color:var(--desc-color);
-    font-size:20px;
+    color:var(--black);
+    font-size:1.7rem;
 }
 
 .back .carousel-item{
-    margin-top: 50px;
+    margin-top: 5rem;
 }
 
 .back .carousel-item i{
@@ -154,8 +225,8 @@ header{
     align-items: center;
     justify-content: center;
     margin: auto;
-    background-color: var(--title-color);
-    font-size: 100px;
+    background-color: var(--title);
+    font-size: 8rem;
 }
 
 #gold{
@@ -179,7 +250,7 @@ header{
 }
 
 .back .carousel-item p{
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 /*END TEAMS*/
@@ -192,7 +263,7 @@ header{
 
 #bad-luck h1{
     margin: 0 auto;
-    color: var(--title-color);
+    color: var(--title);
     text-align: center;
     text-transform: none;
 }
@@ -213,8 +284,8 @@ header{
 .bl-container .carousel{
     text-align: center;
     margin: 2rem auto;
-    background: linear-gradient(21deg, #00dd06, #1677ab);
-    padding: 3px;
+    background: linear-gradient(21deg, var(--main), var(--title));
+    padding: 0.3rem;
     line-height: 150px;
     box-shadow: 0 0 10px 10px rgba(22,119,171,0.5);
 }
@@ -229,8 +300,8 @@ header{
     line-height: 1.5;
     display: inline-block;
     vertical-align: middle;
-    color: var(--par-color);
-    font-size: 20px;
+    color: var(--par);
+    font-size: 1rem;
     text-transform: none;
 }
 
@@ -241,7 +312,7 @@ header{
 
 .inputBox h3{
     margin: 0 auto;
-    color: var(--par-color);
+    color: var(--par);
     text-align: center;
 }
 
@@ -252,25 +323,26 @@ header{
 }
 
 .comment::placeholder{
-    padding: 5px;
+    padding: 0.5rem;
 }
 
 .comment[type="text"] {
-    padding: 10px;
+    padding: 1rem;
 }
 
-.inputBox .btn{
-    display: block;
+.btn{
+    display: block !important;
     margin: 1rem auto;
-    width: 100px;
-    color: var(--main-color);
-    background-color: var(--desc-color);
+    width: 100px !important;
+    color: var(--main);
+    background-color: var(--black) !important;
+    text-transform: capitalize;
 
 }
 
-.inputBox .btn:hover{
-    background-color: var(--main-color);
-    color: var(--desc-color);
+.btn:hover{
+    background-color: var(--main) !important;
+    color: var(--black);
 }
 
 /*END BAD LUCK*/
@@ -278,7 +350,7 @@ header{
 /*START FOOTER*/
 
 footer{
-    background-color: var(--bg-color);
+    background-color: var(--bg);
 }
 
 .box-container{
@@ -290,7 +362,7 @@ footer{
 
 .box-container .box{
     flex: 1 1 25rem;
-    padding: 20px;
+    padding: 2rem;
 }
 
 .box-container .box h3{
@@ -298,23 +370,23 @@ footer{
 }
 
 .box-container .box p{
-    color: #ddd;
+    color: var(--light-bg);
 }
 
 .box-container .box a{
-    color: var(--main-color);
+    color: var(--main);
     display: block;
-    padding: 10px 0;
+    padding: 1rem 0;
     text-decoration: none;
 }
 
 .box-container .box a:hover{
-    color: var(--title-color);
+    color: var(--title);
     text-decoration: none;
 }
 
 .box-container .box a i{
-    padding-right: 10px;
+    padding-right: 1rem;
 }
 
 footer .copy{
@@ -328,23 +400,254 @@ footer .copy{
 
 /*END FOOTER*/
 
+/*START LOGIN*/
+
+#user{
+    display: flex;
+    min-height: 100vh;
+}
+
+#user .box{
+    margin: 5rem;
+    background: var(--white);
+    border: 3px solid var(--black);
+    border-radius: 10px;
+    display: block;
+    flex: 1 1 0px;
+}
+
+#user .box h1{
+    color: var(--title);
+    text-transform: uppercase;
+    padding-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#user .box form{
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+input{
+    width: 100%;
+    margin-bottom: 2rem;
+    background: var(--light-bg);
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+input::placeholder{
+    padding: 0.5rem;
+    color: var(--black);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    padding-left: 1rem;
+}
+
+#user .box form .btn-r, #user .box form .btn-l{
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#user .box form a{
+    display: block;
+    text-align: end;
+    color: var(--par);
+    text-decoration: none;
+}
+
+
+#user .box form a:hover{
+    color: var(--black);
+}
+
+/*END LOGIN*/
+
+/*START ACCOUNT*/
+
+:root{
+    --dim: 200px;
+    --xp-bg: #004700;
+    --xp-active: #0b0;
+}
+
+.user{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 2rem 9%;
+}
+
+.user-graphic{
+    display: block;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.user-graphic img{
+    border-radius: 50%;
+    width: var(--dim);
+    height: var(--dim);
+    border: 3px solid #000;
+    margin-top: 1rem;
+}
+
+.xp-bar{
+    margin: 1rem auto;
+    width: var(--dim);
+    display: flex;
+    margin-bottom: 0;
+}
+
+.xp-bar .xp-bar-bg{
+    height: 5px;
+    background-color: var(--xp-bg);
+    width: 100%;
+    margin: auto 0;
+}
+
+.xp-bar .xp-bar-active{
+    height: 5px;
+    background-color: var(--xp-active);
+    width: 70%;
+}
+
+.xp-bar .level{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: var(--xp-bg);
+}
+
+.xp-bar-value{
+    font-size: 1.3rem;
+}
+
+.xp-bar-value .value{
+    color: var(--xp-active);
+}
+
+.xp-bar-value .max-value{
+    color: var(--xp-bg);
+}
+
+.user-graphic .user-title{
+    color: var(--par);
+    font-size: 1.3rem;
+    font-style: italic;
+    border-top: 1px solid var(--bg);
+    width: 70%;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.user-data{
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-data .info .name{
+    color: var(--title);
+    font-size: 4rem;
+}
+
+.user-data .info .coins{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.user-data .info .coins i{
+    color: var(--main);
+    margin-left: 0.5rem;
+}
+
+.user-tab{
+    padding: 0 2rem;
+}
+
+.user-tab .tab {
+    overflow: hidden;
+    border-bottom: 1px solid #3483eb;
+}
+
+.user-tab .tab button {
+    cursor: pointer;
+    padding: 1rem 2rem;
+    transition: 0.3s;
+    color: var(--title);
+    background-color: var(--light-bg);
+    border-top-right-radius: 10px;
+}
+
+.user-tab .tab button:hover {
+    background-color: var(--bg);
+}
+
+.user-tab .tab button.active {
+    background-color: var(--bg);
+}
+
+.user-tab .tabcontent{
+    display: none;
+}
+
+.user-tab .tabcontent.active {
+    display: block;
+    padding: 1rem 2rem;
+}
+
+.user-tab .tabcontent .row{
+    display: grid;
+    grid-template-columns: 15% 80% 5%;
+    margin: 1rem 0;
+}
+
+.user-tab .tabcontent .row h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-tab .tabcontent .row input{
+    margin-bottom: 0 !important;
+    width: auto !important;
+}
+
+.user-tab .tabcontent .row p{
+    margin-bottom: 0;
+    background-color: var(--light-bg);
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 0 1rem;
+    color: var(--black);
+    font-weight: 400;
+    line-height: 3;
+}
+
+/*END ACCOUNT*/
+
 /*START MOBILE*/
 
 @media screen and (max-width:1500px){
 
     .front h3{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .back .carousel-item{
-        margin-top: 15px;
+        margin-top: 1.5rem;
     }
 }
 
 @media screen and (max-width:1200px){
 
     .back .carousel-item{
-        margin-top: 50px;
+        margin-top: 5rem;
     }
 }
 
@@ -356,6 +659,14 @@ footer .copy{
 
     .description p{
         font-size: 1rem;
+    }
+
+    #user{
+        display: block;
+    }
+
+    .sidenav.active{
+        width:50%;
     }
 }
 
@@ -372,7 +683,7 @@ footer .copy{
     .back .carousel-item .icon-box{
         width: 150px;
         height: 150px;
-        font-size: 75px;
+        font-size: 7.5rem;
     }
 
     .back .carousel-item{
@@ -383,8 +694,12 @@ footer .copy{
         height: 100px;
     }
 
-    .bl-container .carousel-item p{
-        font-size: 15px;
+    .box form a{
+        float: none;
+    }
+
+    .sidenav.active{
+        width:100%;
     }
 
 }

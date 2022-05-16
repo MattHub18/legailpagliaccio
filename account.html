@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Account</title>
+        <meta name="description" content="desc">
+        <meta name="keywords" content="key, word">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- add css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+        <!-- add js -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+
+        <script src="js/connection.js" type="text/javascript"></script>
+        <script src="js/session.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <section class="user">
+            <div class="user-graphic">
+                <img src="img/default-user.png">
+                <div class="experience">
+                    <div class="xp-bar">
+                        <div class="xp-bar-bg">
+                            <div class="xp-bar-active">
+                            </div>
+                        </div>
+                        <span class="level">1</span>
+                    </div>
+                    <p class="xp-bar-value"><span class=value>7</span>/<span class="max-value">10</span></p>
+                </div>
+                <p class="user-title">nubbo</p>
+            </div>
+            <div class="user-data">
+                <div class="info">
+                    <h1 class="name"></h1>
+                    <h3 class="coins">1500<i class="fas fa-coins"></i></h3>
+                </div>
+            </div>
+            <div class="user-thing">
+            </div>
+            <div class="user-tab">
+                <div class="tab">
+                    <button class="tablinks data" onclick="openTab('data')">Dati</button>
+                    <button class="tablinks custom" onclick="openTab('custom')">Personalizzazioni</button>
+                </div>
+
+                <div class="tabcontent data">
+                    <div class="row">
+                        <h4>nome</h4>
+                        <input type="text" placeholder="username" class="username">
+                    </div>
+
+                    <div class="row">
+                        <h4>email</h4>
+                        <p class="email">email</p>
+                    </div>
+
+                    <input type="button" value="salva" class="btn">
+                </div>
+
+                <div class="tabcontent custom">
+                    <h1>tab 2</h1>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/account.js" type="text/javascript"></script>
+    </body>
+</html>
