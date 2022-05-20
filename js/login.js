@@ -1,97 +1,101 @@
-const btnRegister = document.querySelector('.btn-r');
+//register
 
-const userRegisterInput = document.getElementById('user-r');
-const emailRegisterInput = document.getElementById('email-r');
-const passwordRegisterInput = document.getElementById('password-r');
+const userRegisterInput = document.querySelector('#user-r');
+const passwordRegisterInput = document.querySelector('#password-r');
 
-btnRegister.addEventListener('click', () =>{
-    const usr = userRegisterInput.value;
-    const email = emailRegisterInput.value;
+async function registerUser(user, enc){
+    const newUser = await firebase.database().ref('users/'+user).once('value');
+
+    if(!newUser.exists()){
+
+        firebase.database().ref("users/"+user).update({
+            password: enc,
+            coins: 0,
+            expValue: 0,
+            level: 1,
+            teamName: "empty",
+            teamLogo: ""
+        }).then(()=>{
+
+            firebase.database().ref("users/"+user+"/trophies").push().update({
+                date: "No Trophies",
+                type: "none"
+            }).then(()=>{
+                alert("register succesfully");
+
+                userRegisterInput.value = '';
+                passwordRegisterInput.value= '';
+            });
+
+        });
+    }
+    else
+        alert("user already exist");
+}
+
+document.querySelector('.btn-r').addEventListener('click', () =>{
+    const user = userRegisterInput.value;
     const password = passwordRegisterInput.value;
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
-        const user = userCredential.user;
-        user.updateProfile({displayName : usr});
-    }).catch((error) => {
-        if(usr ==""){
-            userRegisterInput.placeholder = 'empty username';
-            userRegisterInput.style = 'background-color: rgba(255,0,0,0.5);';
-        }
+    var empty = false;
 
-        if(email ==""){
-            emailRegisterInput.placeholder = 'empty email';
-            emailRegisterInput.style = 'background-color: rgba(255,0,0,0.5);';
-        }
+    empty = isEmpty(user, userRegisterInput, 'username');
+    empty = isEmpty(password, passwordRegisterInput, 'password')
 
-        if(password ==""){
-            passwordRegisterInput.placeholder = 'empty password';
-            passwordRegisterInput.style = 'background-color: rgba(255,0,0,0.5);';
-        }
+    if(empty) return;
 
-        alert(error.message);
-    });
-    setTimeout(()=>{location.replace("index.html")}, 2000);
+    const enc = encrypt(password);
+
+    registerUser(user, enc);
 });
 
-userRegisterInput.addEventListener('focus', ()=> {
-    userRegisterInput.placeholder = 'username';
-    userRegisterInput.style = 'background-color: #ddd;';
-});
+resetInput(userRegisterInput, 'username');
+resetInput(passwordRegisterInput, 'password');
 
-emailRegisterInput.addEventListener('focus', ()=> {
-    emailRegisterInput.placeholder = 'email';
-    emailRegisterInput.style = 'background-color: #ddd;';
-});
+//login
 
-passwordRegisterInput.addEventListener('focus', ()=> {
-    passwordRegisterInput.placeholder = 'password';
-    passwordRegisterInput.style = 'background-color: #ddd;';
-});
+const userLoginInput = document.querySelector('#user-l');
+const passwordLoginInput = document.querySelector('#password-l');
 
-
-const btnLogin = document.querySelector('.btn-l');
-
-const emailLoginInput = document.getElementById('email-l');
-const passwordLoginInput = document.getElementById('password-l');
-
-btnLogin.addEventListener('click', () =>{
-    const email = emailLoginInput.value;
+document.querySelector('.btn-l').addEventListener('click', () =>{
+    const user = userLoginInput.value;
     const password = passwordLoginInput.value;
 
-    firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
-        const user = userCredential.user;
-    }).catch((error) => {
-        if(user ==""){
-            userLoginInput.placeholder = 'empty email';
-            userLoginInput.style = 'background-color: rgba(255,0,0,0.5);';
-        }
+    var empty = false;
 
-        if(pswLogin ==""){
-            passwordLoginInput.placeholder = 'empty password';
-            passwordLoginInput.style = 'background-color: rgba(255,0,0,0.5);';
+    empty = isEmpty(user, userLoginInput, 'username');
+    empty = isEmpty(password, passwordLoginInput, 'password')
+
+    if(empty) return;
+
+
+    firebase.database().ref('users/'+user).on('value', (snapshot)=>{
+        if(snapshot.val() != null){
+            const pswEnc = snapshot.val()['password'];
+            if(decrypt(pswEnc)===password){
+                setCookie(user);
+                alert("login succesfully")
+                location.replace("index.html");
+            }
+            else
+                alert('wrong username/password');
         }
+        else
+            alert("user not exist")
     });
-    setTimeout(()=>{location.replace("index.html")}, 3000);
 });
 
-emailLoginInput.addEventListener('focus', ()=> {
-    emailLoginInput.placeholder = 'email';
-    emailLoginInput.style = 'background-color: #ddd;';
-});
+resetInput(userLoginInput, 'username');
+resetInput(passwordLoginInput, 'password');
 
-passwordLoginInput.addEventListener('focus', ()=> {
-    passwordLoginInput.placeholder = 'password';
-    passwordLoginInput.style = 'background-color: #ddd;';
-});
-
-const resetPassword = document.querySelector('.reset');
-
-resetPassword.addEventListener('click', ()=>{
-    const email = emailLoginInput.value;
-    if(email !="")
-        firebase.auth().sendPasswordResetEmail();
-    else{
-        emailLoginInput.placeholder = 'email required!';
-        emailLoginInput.style = 'background-color: rgba(255,0,0,0.5);';
+document.querySelector('.reset').addEventListener('click', ()=>{
+    const username = userLoginInput.value;
+    if(!isEmpty(username, userLoginInput, 'username')){
+        firebase.database().ref("users/"+username).on('value', (snapshot)=>{
+            const user = snapshot.val();
+            if(user!=null){
+                alert('Your password is: '+decrypt(user['password']));
+            }
+        });
     }
 });

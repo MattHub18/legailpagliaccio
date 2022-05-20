@@ -6,9 +6,13 @@
     --par:#666;
     --bg:#343a40;
     --overlay:rgba(244,244,244,0.5);
+    --light-overlay:rgba(255,255,255,0.2);
     --black: #000;
     --white: #fff;
     --light-bg: #ddd;
+    --blue-bg: rgba(22, 119, 171,0.3);
+    --xp-bg: #004700;
+    --xp-active: #0b0;
 }
 
 *{
@@ -59,7 +63,7 @@ p{
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-brand:hover{
-    background: var(--main) !important;
+    background: var(--main);
     color: var(--black) !important;
 }
 
@@ -79,16 +83,12 @@ header{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    display: flex !important;
-    align-items: center;
-    justify-content: flex-start;
 }
-
 
 .description{
     margin: 0 20%;
+    padding: 15rem 0;
 }
-
 
 .description h1{
     color: var(--title);
@@ -199,6 +199,11 @@ header{
 
 .front img, .front h3, .back h3{
     margin-top: 1.7rem;
+}
+
+.front img{
+    max-width: 260px;
+    max-height: 260px;
 }
 
 .back{
@@ -333,15 +338,15 @@ header{
 .btn{
     display: block !important;
     margin: 1rem auto;
-    width: 100px !important;
+    width: 100px;
     color: var(--main);
-    background-color: var(--black) !important;
+    background-color: var(--black);
     text-transform: capitalize;
 
 }
 
 .btn:hover{
-    background-color: var(--main) !important;
+    background-color: var(--main);
     color: var(--black);
 }
 
@@ -443,7 +448,7 @@ input::placeholder{
     color: var(--black);
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="password"] {
     padding-left: 1rem;
 }
 
@@ -470,12 +475,6 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 /*START ACCOUNT*/
 
-:root{
-    --dim: 200px;
-    --xp-bg: #004700;
-    --xp-active: #0b0;
-}
-
 .user{
     display: grid;
     grid-template-columns: 30% 70%;
@@ -490,47 +489,47 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .user-graphic img{
     border-radius: 50%;
-    width: var(--dim);
-    height: var(--dim);
+    width: 200px;
+    height: 200px;
     border: 3px solid #000;
     margin-top: 1rem;
 }
 
-.xp-bar{
+.user-graphic .xp-bar{
     margin: 1rem auto;
-    width: var(--dim);
+    width: 200px;
     display: flex;
     margin-bottom: 0;
 }
 
-.xp-bar .xp-bar-bg{
+.user-graphic .xp-bar .xp-bar-bg{
     height: 5px;
     background-color: var(--xp-bg);
     width: 100%;
     margin: auto 0;
 }
 
-.xp-bar .xp-bar-active{
+.user-graphic .xp-bar .xp-bar-active{
     height: 5px;
     background-color: var(--xp-active);
-    width: 70%;
+    width: 0;
 }
 
-.xp-bar .level{
+.user-graphic .xp-bar .level{
     margin-left: 1rem;
     font-size: 1.5rem;
     color: var(--xp-bg);
 }
 
-.xp-bar-value{
+.user-graphic .xp-bar-value{
     font-size: 1.3rem;
 }
 
-.xp-bar-value .value{
+.user-graphic .xp-bar-value .value{
     color: var(--xp-active);
 }
 
-.xp-bar-value .max-value{
+.user-graphic .xp-bar-value .max-value{
     color: var(--xp-bg);
 }
 
@@ -546,23 +545,76 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .user-data{
     padding: 3rem;
+}
+
+.user-data .info{
     display: flex;
     align-items: center;
 }
 
-.user-data .info .name{
+.user-data .info .text-info .name{
     color: var(--title);
     font-size: 4rem;
 }
 
-.user-data .info .coins{
+.user-data .info .text-info .coins{
     margin-top: 1rem;
     font-size: 1.5rem;
 }
 
-.user-data .info .coins i{
+.user-data .info .text-info .coins i{
     color: var(--main);
     margin-left: 0.5rem;
+}
+
+.user-data .info .drop-area{
+    margin-left: auto;
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 400px;
+    padding: 1rem 2rem;
+}
+
+.user-data .info .drop-area form p{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.user-data .info .drop-area form input{
+    background-color: var(--blue-bg);
+}
+
+.user-data .info .drop-area form input::file-selector-button {
+    display: none;
+}
+
+.user-trophy h1{
+    color: var(--title);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.user-trophy .carousel-item{
+    margin-top: 2rem;
+}
+
+.user-trophy .carousel-item i{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: var(--bg);
+    font-size: 8rem;
+}
+
+.user-trophy .carousel-item p{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.7rem;
 }
 
 .user-tab{
@@ -571,7 +623,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .user-tab .tab {
     overflow: hidden;
-    border-bottom: 1px solid #3483eb;
+    border-bottom: 1px solid var(--title);
 }
 
 .user-tab .tab button {
@@ -600,33 +652,94 @@ input[type="text"], input[type="email"], input[type="password"] {
     padding: 1rem 2rem;
 }
 
-.user-tab .tabcontent .row{
+.user-tab .data .input-row{
     display: grid;
     grid-template-columns: 15% 80% 5%;
     margin: 1rem 0;
 }
 
-.user-tab .tabcontent .row h4{
+.user-tab .data .input-row h4{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.1rem;
 }
 
-.user-tab .tabcontent .row input{
-    margin-bottom: 0 !important;
-    width: auto !important;
-}
-
-.user-tab .tabcontent .row p{
+.user-tab .data .input-row input{
     margin-bottom: 0;
-    background-color: var(--light-bg);
-    height: 3rem;
-    font-size: 1rem;
-    border-radius: 10px;
-    padding: 0 1rem;
+    width: auto;
+}
+
+.user-tab .data .input-row i{
+    position: relative;
+    text-align: center;
+    line-height: 3;
+    left: -2.5rem;
+}
+
+.user-tab .custom .container-fluid{
+    margin-top: 0;
+}
+
+.user-tab .custom .element{
+    padding: 1rem;
+    background-color: var(--blue-bg);
+    text-align: center;
+}
+
+.user-tab .custom .element .img-container{
+    position:relative;
+    display:inline-block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border: 1px solid var(--black);
+    border-radius: 50%;
+}
+
+.user-tab .custom .element .img-container img{
+    border-radius: 50%;
+}
+
+.user-tab .custom .element .img-container .hover{
+    transition: .5s ease;
+    opacity: 0;
+    width: 70px;
+    position:absolute;
+    bottom:50%;
+    right:50%;
+    height:40px;
+    margin:0px -35px -20px 0px;
+}
+
+.user-tab .custom .element .img-container:hover img {
+    opacity: 0.5;
+}
+
+.user-tab .custom .element .img-container:hover .hover {
+    opacity: 1;
+}
+
+.user-tab .custom .element .img-container .hover .btn i{
+    color: var(--main);
+    margin-left: 0.5rem;
+}
+
+.user-tab .custom .element .img-container .hover .btn:hover i{
+    color: var(--black);
+}
+
+.user-tab .custom .element p{
+    text-align: center;
+    margin: 0;
     color: var(--black);
     font-weight: 400;
-    line-height: 3;
+}
+
+.user-tab .custom .element .hline{
+    margin: 0;
+    border: 1px solid var(--title);
+    margin: 0.2rem auto 0 auto;
+    width: 50%;
 }
 
 /*END ACCOUNT*/
@@ -642,6 +755,15 @@ input[type="text"], input[type="email"], input[type="password"] {
     .back .carousel-item{
         margin-top: 1.5rem;
     }
+
+    .user-tab .custom .element.a,
+    .user-tab .custom .element.c,
+    .user-tab .custom .element.f,
+    .user-tab .custom .element.h,
+    .user-tab .custom .element.i,
+    .user-tab .custom .element.k{
+        background-color: var(--light-bg);
+    }
 }
 
 @media screen and (max-width:1200px){
@@ -649,9 +771,49 @@ input[type="text"], input[type="email"], input[type="password"] {
     .back .carousel-item{
         margin-top: 5rem;
     }
+
+    .user-tab .data .input-row{
+        display: block;
+    }
+
+    .user-tab .data .input-row input{
+        width: 100%;
+    }
+
+    .user-tab .data .input-row i{
+        left: 90%;
+        top: -3rem;
+    }
+}
+
+@media screen and (max-width:991px){
+
+    .user{
+        display: block;
+    }
+
+    .user-data .info{
+        padding-top: 1rem;
+        text-align: center;
+        display: block;
+    }
+
+    .user-data .info .drop-area{
+        margin: 2rem auto;
+    }
+
+    .user-tab .custom .element:nth-child(odd){
+        background-color: var(--light-bg);
+    }
+
+    .user-tab .custom .element.f,
+    .user-tab .custom .element.h{
+        background-color: var(--blue-bg);
+    }
 }
 
 @media screen and (max-width:768px){
+
 
     .description h1{
         font-size: 2rem;
@@ -667,6 +829,47 @@ input[type="text"], input[type="email"], input[type="password"] {
 
     .sidenav.active{
         width:50%;
+    }
+
+    .xp-bar{
+        width: 200px;
+    }
+
+    .user-tab .tab button{
+        padding: 0.5rem 1.48rem;
+    }
+
+    .user-tab .tabcontent.custom{
+        padding: 1rem 0;
+    }
+
+    .user-tab .custom .container-fluid{
+        padding-right: 0;
+    }
+
+    .user-tab .custom .element.a,
+    .user-tab .custom .element.d,
+    .user-tab .custom .element.e,
+    .user-tab .custom .element.h,
+    .user-tab .custom .element.i,
+    .user-tab .custom .element.l{
+        background-color: var(--light-bg);
+    }
+
+    .user-tab .custom .element.c,
+    .user-tab .custom .element.g,
+    .user-tab .custom .element.k{
+        background-color: var(--blue-bg);
+    }
+}
+
+@media screen and (max-width:576px){
+    .user-tab .custom .element{
+        width: 50%;
+    }
+
+    .user-data .info .drop-area{
+        width: 300px;
     }
 }
 
@@ -700,6 +903,15 @@ input[type="text"], input[type="email"], input[type="password"] {
 
     .sidenav.active{
         width:100%;
+    }
+
+    .user-tab .data .input-row i{
+        left: 85%;
+    }
+
+    .user-data .info .drop-area{
+        width: auto;
+        margin: 2rem 0;
     }
 
 }
