@@ -67,11 +67,57 @@ firebase.database().ref('comments').on('value', (snapshot)=>{
 
 //trophies
 
+function makeCard(row, index){
+    var flipper = document.createElement("div");
+    flipper.className = "flipper col-xl-3 col-lg-6 col-md-6 col-sm-12";
+
+    var teamCard = document.createElement("div");
+    teamCard.className = "team-card";
+
+    var front = document.createElement("div");
+    front.className = "front";
+
+    var teamLogo = document.createElement("img");
+    teamLogo.className = `img-fluid team-logo tl${index}`;
+
+    var teamName = document.createElement("h3");
+    teamName.className = `team-name tn${index}`;
+
+    var back = document.createElement("div");
+    back.className = "back";
+
+    var userName = document.createElement("h3");
+    userName.className = `username u${index}`;
+
+    var slide = document.createElement("div");
+    slide.className = "carousel slide";
+    slide.setAttribute("data-ride","carousel");
+    slide.setAttribute("data-interval","2000");
+
+    var slideInner = document.createElement("div");
+    slideInner.className = `carousel-inner el${index}`;
+
+    slide.appendChild(slideInner);
+    back.appendChild(userName);
+    back.appendChild(slide);
+    front.appendChild(teamLogo);
+    front.appendChild(teamName);
+    teamCard.appendChild(front);
+    teamCard.appendChild(back);
+    flipper.appendChild(teamCard);
+    row.appendChild(flipper);
+    index++;
+
+    $('.carousel').carousel()
+}
+
 firebase.database().ref("users").on('value', (snapshot)=>{
     const users = snapshot.val();
     if(users!=null){
         var index = 0
+        const row = document.querySelector(".row");
         for (const [uname, user] of Object.entries(users)) {
+            makeCard(row, index);
             document.querySelector(`.username.u${index}`).innerHTML = uname;
             document.querySelector(`.team-name.tn${index}`).innerHTML = user['teamName'];
             document.querySelector(`.team-logo.tl${index}`).setAttribute("src", user['teamLogo']);
