@@ -22,14 +22,13 @@ const usernameInput = document.querySelector('.username');
 const passwordInput = document.querySelector('.password');
 const teamnameInput = document.querySelector('.teamname');
 
-const username = getCookie("username");
-
 firebase.database().ref("users/"+username).on('value',(snapshot)=>{
     const user = snapshot.val();
     if(user!=null){
         var l = user['level'];
         var e = user['expValue'];
         document.querySelector('.name').innerText = username;
+        document.querySelector(".user-logo").setAttribute("src", user['userLogo']);
         document.querySelector('.level').innerText = l;
         document.querySelector('.value').innerText = e;
         const lvl = levels[l];
@@ -62,7 +61,11 @@ async function readUser(user, enc, teamname){
     const expValue = oldUser['expValue'];
     const level = oldUser['level'];
     const trophies = oldUser['trophies'];
-    const teamlogo = oldUser['teamlogo'];
+    const teamlogo = oldUser['teamLogo'];
+    const userlogo = oldUser['userLogo'];
+    const admin = oldUser['admin'];
+
+    firebase.database().ref("users/"+getCookie("username")).remove();
 
     firebase.database().ref("users/"+user).update({
         password: enc,
@@ -71,10 +74,10 @@ async function readUser(user, enc, teamname){
         level: level,
         trophies: trophies,
         teamName: teamname,
-        teamLogo: teamlogo
+        teamLogo: teamlogo,
+        userLogo: userlogo,
+        admin: admin
     });
-
-    firebase.database().ref("users/"+getCookie("username")).remove();
 
     setCookie(user);
 
@@ -154,3 +157,30 @@ const dropArea = document.querySelector('.drop-area');
 });
 
 dropArea.addEventListener('drop', (e)=>{handleFile(e.dataTransfer.file);}, false);
+
+//user img
+
+async function transaction(button, cost){
+    const user = await firebase.database().ref("users/"+username).once('value');
+    var coins = user.val()['coins'];
+    if(coins-cost>=0){
+        coins-=cost;
+        const url = button.parentNode.children[0].getAttribute("src");
+        firebase.database().ref("users/"+username).update({
+            coins: coins,
+            userLogo: url
+        });
+    }else
+        alert('you can not purchase this item');
+}
+
+
+document.querySelectorAll(".hover").forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        var cost = parseInt(button.innerHTML.match(/(\d+)/)[0]);
+        transaction(button, cost);
+    });
+});
+
+//admin
+isAdmin(username);

@@ -154,6 +154,14 @@ header{
     color: var(--main);
 }
 
+.sidenav ul li .adminAction{
+    display: none;
+}
+
+.sidenav ul li .adminAction.active{
+    display: block;
+}
+
 /*END SIDENAV*/
 
 /*START TEAMS*/
@@ -478,7 +486,7 @@ input[type="text"], input[type="password"] {
 .user{
     display: grid;
     grid-template-columns: 30% 70%;
-    padding: 2rem 9%;
+    padding: 4rem 9%;
 }
 
 .user-graphic{
@@ -744,6 +752,24 @@ input[type="text"], input[type="password"] {
 
 /*END ACCOUNT*/
 
+/*START ADMIN*/
+.admin-panel{
+    padding: 10rem 9%;
+}
+
+.admin-panel .forms{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.admin-panel .trophy-form select, .admin-panel .trophy-form select option{
+    font-family: 'FontAwesome', sans-serif;
+}
+
+/*END ADMIN*/
+
 /*START MOBILE*/
 
 @media screen and (max-width:1500px){
@@ -783,6 +809,15 @@ input[type="text"], input[type="password"] {
     .user-tab .data .input-row i{
         left: 90%;
         top: -3rem;
+    }
+
+    .admin-panel .forms{
+        display: block;
+        text-align: center;
+    }
+
+    .admin-panel .forms form{
+         margin: 1rem auto;
     }
 }
 
@@ -912,6 +947,10 @@ input[type="text"], input[type="password"] {
     .user-data .info .drop-area{
         width: auto;
         margin: 2rem 0;
+    }
+
+    .admin-panel .forms .team-form{
+        font-size: 1.3rem;
     }
 
 }

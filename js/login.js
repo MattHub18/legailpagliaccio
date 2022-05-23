@@ -13,8 +13,10 @@ async function registerUser(user, enc){
             coins: 0,
             expValue: 0,
             level: 1,
-            teamName: "empty",
-            teamLogo: ""
+            teamName: "",
+            teamLogo: "",
+            userLogo: "img/default-user.png",
+            admin: false
         }).then(()=>{
 
             firebase.database().ref("users/"+user+"/trophies").push().update({

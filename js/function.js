@@ -95,3 +95,14 @@ function appendTrophies(award, selector){
 
     selector.appendChild(car_item);
 }
+
+async function isAdmin(username){
+    const admin = document.querySelector(".adminAction");
+
+    const userRef = await firebase.database().ref("users/"+username).once('value');
+    const user = userRef.val();
+
+    if(user!=null && user['admin'] && !admin.classList.contains('active'))
+        admin.classList.toggle('active');
+
+}
