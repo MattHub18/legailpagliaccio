@@ -129,9 +129,9 @@ function handleFile(file){
     const uploadTask = storage.put(file);
     uploadTask.on('state_changed',null,null,()=>{
         uploadTask.snapshot.ref.getDownloadURL().then((downloadUrl)=>{
-           firebase.database().ref("users/"+username).update({
-               teamLogo: downloadUrl
-           });
+            firebase.database().ref("users/"+username).update({
+                teamLogo: downloadUrl
+            });
             alert('logo changed succesfully');
             document.getElementById("fileUpload").value = "";
         });
@@ -158,6 +158,98 @@ const dropArea = document.querySelector('.drop-area');
 
 dropArea.addEventListener('drop', (e)=>{handleFile(e.dataTransfer.file);}, false);
 
+//customs
+
+const elementPerTab = 12;
+
+firebase.storage().ref("img/customs").listAll().then((list)=>{
+    var size = list.items.length;
+    let tab;
+    if(size>0){
+        tab  = Math.floor(size/elementPerTab);
+        if(size%12!=0)
+            tab++;
+
+        const carouselInner = document.querySelector(".customs-inner");
+        const carouselIndicator = document.querySelector(".carousel-indicators");
+
+        for(var t=0; t<tab; t++){
+            var carouselItem = document.createElement("div");
+            carouselItem.className = "carousel-item";
+
+            var row = document.createElement("div");
+            row.className = "row";
+
+            for(var e=0; e <elementPerTab; e++){
+                var element = document.createElement("div");
+                element.className = "element col-xl-3 col-lg-3 col-md-4 col-sm-6";
+
+                var imgContainer = document.createElement("div");
+                imgContainer.className = "img-container";
+
+                var img = document.createElement("img");
+                img.className = `img${t}${e}`;
+
+                var button = document.createElement("button");
+                button.className = "btn hover";
+                button.setAttribute("id", `btn${e}`);
+                button.setAttribute("type", "button");
+                button.innerHTML = "100<i class=\"fas fa-coins\"></i>";
+                disableButton(button);
+
+                var desc = document.createElement("p");
+                desc.innerText = "maglia";
+
+                var hline = document.createElement("div");
+                hline.className = "hline";
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(button);
+                element.appendChild(imgContainer);
+                element.appendChild(desc);
+                element.appendChild(hline);
+                row.appendChild(element);
+            }
+
+            carouselItem.appendChild(row);
+
+            carouselInner.appendChild(carouselItem);
+
+            var indicator = document.createElement("li");
+            indicator.setAttribute("data-target",".customs-slide");
+            indicator.setAttribute("data-slide-to",t.toString());
+            carouselIndicator.appendChild(indicator);
+        }
+    }
+});
+
+async function sorting(img, url){
+    const imgPath = await img.getMetadata();
+    const np= imgPath.fullPath.split("-");
+    var t=parseInt(np[0].match(/(\d+)/));
+    var e=parseInt(np[1].match(/(\d+)/));
+    document.querySelector(`.img${t}${e}`).setAttribute("src", url);
+}
+
+firebase.storage().ref("img/customs").listAll().then((list)=>{
+    document.querySelector(".customs-inner .carousel-item").classList.toggle('active');
+    document.querySelector(".carousel-indicators li").classList.toggle('active');
+
+    list.items.forEach((img)=>{
+        img.getDownloadURL().then(function(url) {
+            sorting(img, url)
+        });
+    });
+
+    document.querySelectorAll(".hover").forEach((button, index)=>{
+        button.addEventListener('click', ()=>{
+            var value = parseInt(button.innerHTML.match(/(\d+)/));
+            var cost = !isNaN(value) ? value : 0;
+            transaction(button, cost);
+        });
+    });
+});
+
 //user img
 
 async function transaction(button, cost){
@@ -170,17 +262,22 @@ async function transaction(button, cost){
             coins: coins,
             userLogo: url
         });
+        const btnId = button.getAttribute("id");
+        firebase.database().ref("users/"+username+"/customs").update({[btnId]:btnId});
+        disableButton(button);
     }else
         alert('you can not purchase this item');
 }
 
-
-document.querySelectorAll(".hover").forEach((button)=>{
-    button.addEventListener('click', ()=>{
-        var cost = parseInt(button.innerHTML.match(/(\d+)/)[0]);
-        transaction(button, cost);
-    });
-});
+async function disableButton(button){
+    const customRef = await firebase.database().ref("users/"+username+"/customs").once('value');
+    const customVal = customRef.val();
+    if(customVal!=null){
+        const customs = Object.values(customVal);
+        if(customs.includes(button.getAttribute("id")))
+            button.innerHTML = "Scegli";
+    }
+}
 
 //admin
 isAdmin(username);

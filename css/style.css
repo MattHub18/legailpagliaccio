@@ -41,9 +41,18 @@ p{
 }
 
 /*START NAV*/
-.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand {
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand{
     color: var(--main) !important;
     cursor:pointer;
+}
+
+.navbar-dark .navbar-brand img{
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-dark .index:hover{
+    background-color: transparent !important;
 }
 
 .navbar-dark .navbar-nav .nav-link i{
@@ -370,7 +379,7 @@ footer{
 }
 
 .box-container .box{
-    flex: 1 1 25rem;
+    flex: 1 1 20rem;
     padding: 2rem;
 }
 
@@ -385,7 +394,7 @@ footer{
 .box-container .box a{
     color: var(--main);
     display: block;
-    padding: 1rem 0;
+    padding-top: 1rem;
     text-decoration: none;
 }
 
@@ -653,7 +662,7 @@ input[type="text"], input[type="password"] {
 
 .user-tab .tabcontent.active {
     display: block;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
 }
 
 .user-tab .data .input-row{
@@ -681,8 +690,34 @@ input[type="text"], input[type="password"] {
     left: -2.5rem;
 }
 
+.carousel-indicators{
+    bottom: 0!important;
+    margin-bottom: 0.3rem !important;
+}
+
+.user-tab .customs-slide .carousel-indicators li{
+    background: var(--black);
+}
+
+.user-tab .customs-slide .carousel-indicators li.active{
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.3);
+}
+
+.user-tab .customs-slide a{
+    opacity: 1!important;
+    width: 20px !important;
+    display: block;
+    top: 42% !important;
+}
+
+.user-tab .customs-slide a span{
+    background-color: var(--black);
+     height: 60px !important;
+}
+
 .user-tab .custom .container-fluid{
     margin-top: 0;
+    padding: 0;
 }
 
 .user-tab .custom .element{
@@ -691,6 +726,13 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
+/*
+.user-tab .custom .element:nth-child(0),
+.user-tab .custom .element:nth-child(2),
+{
+    background-color: var(--light-bg);
+}
+*/
 .user-tab .custom .element .img-container{
     position:relative;
     display:inline-block;
@@ -702,6 +744,8 @@ input[type="text"], input[type="password"] {
 
 .user-tab .custom .element .img-container img{
     border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 
 .user-tab .custom .element .img-container .hover{
@@ -809,7 +853,7 @@ input[type="text"], input[type="password"] {
     }
 
     .admin-panel .forms form{
-         margin: 1rem auto;
+        margin: 1rem auto;
     }
 }
 
