@@ -580,7 +580,7 @@ input[type="text"], input[type="password"] {
     margin-left: 0.5rem;
 }
 
-.user-data .info .drop-area{
+.drop-area{
     margin-left: auto;
     border: 2px dashed #ccc;
     border-radius: 20px;
@@ -588,17 +588,17 @@ input[type="text"], input[type="password"] {
     padding: 1rem 2rem;
 }
 
-.user-data .info .drop-area form p{
+.drop-area form p{
     text-align: center;
     font-size: 1.3rem;
     font-weight: 400;
 }
 
-.user-data .info .drop-area form input{
+.drop-area form input{
     background-color: var(--blue-bg);
 }
 
-.user-data .info .drop-area form input::file-selector-button {
+.drop-area form input::file-selector-button {
     display: none;
 }
 
@@ -712,7 +712,7 @@ input[type="text"], input[type="password"] {
 
 .user-tab .customs-slide a span{
     background-color: var(--black);
-     height: 60px !important;
+    height: 60px !important;
 }
 
 .user-tab .custom .container-fluid{
@@ -726,13 +726,16 @@ input[type="text"], input[type="password"] {
     text-align: center;
 }
 
-/*
-.user-tab .custom .element:nth-child(0),
+
 .user-tab .custom .element:nth-child(2),
-{
+.user-tab .custom .element:nth-child(4),
+.user-tab .custom .element:nth-child(5),
+.user-tab .custom .element:nth-child(7),
+.user-tab .custom .element:nth-child(10),
+.user-tab .custom .element:nth-child(12){
     background-color: var(--light-bg);
 }
-*/
+
 .user-tab .custom .element .img-container{
     position:relative;
     display:inline-block;
@@ -808,6 +811,10 @@ input[type="text"], input[type="password"] {
     font-family: 'FontAwesome', sans-serif;
 }
 
+.admin-panel .drop-area{
+    margin: 5rem auto;
+}
+
 /*END ADMIN*/
 
 /*START MOBILE*/
@@ -816,15 +823,6 @@ input[type="text"], input[type="password"] {
 
     .front h3{
         font-size: 1.3rem;
-    }
-
-    .user-tab .custom .element.a,
-    .user-tab .custom .element.c,
-    .user-tab .custom .element.f,
-    .user-tab .custom .element.h,
-    .user-tab .custom .element.i,
-    .user-tab .custom .element.k{
-        background-color: var(--light-bg);
     }
 }
 
@@ -869,16 +867,15 @@ input[type="text"], input[type="password"] {
         display: block;
     }
 
-    .user-data .info .drop-area{
+    .drop-area{
         margin: 2rem auto;
     }
 
-    .user-tab .custom .element:nth-child(odd){
+    .user-tab .custom .element:nth-child(even){
         background-color: var(--light-bg);
     }
 
-    .user-tab .custom .element.f,
-    .user-tab .custom .element.h{
+    .user-tab .custom .element:nth-child(odd){
         background-color: var(--blue-bg);
     }
 }
@@ -918,20 +915,24 @@ input[type="text"], input[type="password"] {
         padding-right: 0;
     }
 
-    .user-tab .custom .element.a,
-    .user-tab .custom .element.d,
-    .user-tab .custom .element.e,
-    .user-tab .custom .element.h,
-    .user-tab .custom .element.i,
-    .user-tab .custom .element.l{
+    .user-tab .custom .element:nth-child(1),
+    .user-tab .custom .element:nth-child(4),
+    .user-tab .custom .element:nth-child(5),
+    .user-tab .custom .element:nth-child(8),
+    .user-tab .custom .element:nth-child(9),
+    .user-tab .custom .element:nth-child(12){
+        background-color: var(--blue-bg);
+    }
+
+    .user-tab .custom .element:nth-child(2),
+    .user-tab .custom .element:nth-child(3),
+    .user-tab .custom .element:nth-child(6),
+    .user-tab .custom .element:nth-child(7),
+    .user-tab .custom .element:nth-child(10),
+    .user-tab .custom .element:nth-child(11){
         background-color: var(--light-bg);
     }
 
-    .user-tab .custom .element.c,
-    .user-tab .custom .element.g,
-    .user-tab .custom .element.k{
-        background-color: var(--blue-bg);
-    }
 }
 
 @media screen and (max-width:576px){
@@ -939,7 +940,7 @@ input[type="text"], input[type="password"] {
         width: 50%;
     }
 
-    .user-data .info .drop-area{
+    .drop-area{
         width: 300px;
     }
 }
@@ -980,7 +981,7 @@ input[type="text"], input[type="password"] {
         left: 85%;
     }
 
-    .user-data .info .drop-area{
+    .drop-area{
         width: auto;
         margin: 2rem 0;
     }

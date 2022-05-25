@@ -15,7 +15,7 @@
         <script src="js/function.js" type="text/javascript"></script>
         <script>
             const uname = getCookie("username");
-            if(uname=="" && !isAdmin(uname))
+            if(uname==="")
                 location.replace("index.html");
         </script>
 
@@ -54,6 +54,7 @@
             </ul>
         </div>
 
+        <!--admin-->
         <section class="admin-panel">
             <div class="forms">
                 <form action="" class="team-form">
@@ -79,6 +80,13 @@
                 </form>
             </div>
             <input type="button" class="btn" value="aggiungi">
+
+            <div class="drop-area">
+                <form>
+                    <p>Aggiungi gli avatar</p>
+                    <input type="file" id="fileUpload" accept="image/*" onchange="handleFiles(this.files)">
+                </form>
+            </div>
         </section>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

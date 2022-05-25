@@ -106,3 +106,44 @@ async function isAdmin(username){
         admin.classList.toggle('active');
 
 }
+
+//drag n drop
+
+function handleFile(file){
+    let downloadUrl;
+    const storage = firebase.storage().ref("img/teams/"+file.name);
+    const uploadTask = storage.put(file);
+    uploadTask.on('state_changed',null,null,()=>{
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadUrl)=>{
+            firebase.database().ref("users/"+username).update({
+                teamLogo: downloadUrl
+            });
+            alert('logo changed succesfully');
+            document.getElementById("fileUpload").value = "";
+        });
+    });
+
+}
+
+function handleFiles(files){
+    files.forEach((file)=>handleFile(file));
+}
+
+const dropArea = document.querySelector('.drop-area');
+
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+    }, false);
+});
+
+['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, ()=>{dropArea.classList.add('highlight');}, false);
+});
+
+['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, ()=>{dropArea.classList.remove('highlight');}, false);
+});
+
+dropArea.addEventListener('drop', (e)=>{handleFile(e.dataTransfer.file);}, false);
