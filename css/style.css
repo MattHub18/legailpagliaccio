@@ -1,202 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500&display=swap');
 
-:root{
-    --main:#fff700;
-    --title:#1677ab;
-    --par:#666;
-    --bg:#343a40;
-    --overlay:rgba(244,244,244,0.5);
-    --light-overlay:rgba(255,255,255,0.2);
-    --black: #000;
-    --white: #fff;
-    --light-bg: #ddd;
-    --blue-bg: rgba(22, 119, 171,0.3);
-    --xp-bg: #004700;
-    --xp-active: #0b0;
+/*INDEX*/
+:root {
+    --main: #fff700;
+    --title: #1677ab;
 }
 
 *{
+    margin:0;
+    padding:0;
     font-family: 'Exo 2', sans-serif;
-    margin: 0;
-    padding: 0;
     outline: none;
     border: none;
     text-decoration: none;
+    list-style: none;
 }
 
-h1{
-    font-weight: 500;
+/*NAVBAR*/
+
+.collapse .navbar-nav .nav-item .nav-link, .sidebar-nav .nav-item .nav-link{
+    color: var(--main);
 }
 
-h3{
-    font-weight: 400;
+.collapse .navbar-nav .nav-item .nav-link:hover{
+    color: var(--title);
 }
 
-a{
-    font-weight: 300;
-}
+/*LOGIN*/
 
-p{
-    font-weight: 200;
-}
-
-/*START NAV*/
-.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-brand{
-    color: var(--main) !important;
-    cursor:pointer;
-}
-
-.navbar-dark .navbar-brand img{
-    width: 30px;
-    height: 30px;
-}
-
-.navbar-dark .index:hover{
-    background-color: transparent !important;
-}
-
-.navbar-dark .navbar-nav .nav-link i{
-    padding-right: 0.5rem;
-}
-
-.navbar-dark .navbar-nav .login, .navbar-dark .navbar-nav .user{
-    display: none;
-}
-
-.navbar-dark .navbar-nav .login.active, .navbar-dark .navbar-nav .user.active {
-    display: block;
-}
-
-.navbar-dark .navbar-nav .user.active i{
-    color: #00ff00;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-brand:hover{
-    background: var(--main);
-    color: var(--black) !important;
-}
-
-.navbar-dark .navbar-collapse{
-    justify-content:flex-end;
-}
-
-.navbar-dark .navbar-toggler{
-    background: var(--overlay) !important;
-}
-/*END NAV*/
-
-/* START HEADER */
-header{
-    background: linear-gradient(var(--overlay), var(--overlay)), url(../img/logo.png);
+.login-container{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    z-index: 10000;
     min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
 }
 
-.description{
+.login-container.active{
+    top: 0;
+}
+
+.login-container form{
+    margin: 5rem auto;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    width: 60%;
+}
+
+form label{
+    color: #fff;
+}
+
+form .btn{
+    margin-top: 10px;
+    width: 100%;
+    background-color: var(--main);
+    color: #343a40;
+}
+
+form .btn:hover{
+    background-color: var(--title);
+}
+
+#login-close{
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*HEADER*/
+
+header{
+    --overlay: rgba(244, 244, 244, 0.5);
+    min-height: 100vh;
+    background: linear-gradient(var(--overlay), var(--overlay)), url("../img/logo.png") fixed center;
+    background-size: cover;
+}
+
+.description {
     margin: 0 20%;
     padding: 15rem 0;
 }
 
 .description h1{
+    font-size: 2.5em;
     color: var(--title);
-    padding: 1rem 0;
 }
 
 .description p{
-    color: var(--par);
-    font-size: 1.3rem;
+    font-size: 1.5em;
+    color: #666;
 }
 
-/*END HEADER*/
-
-/*START SIDENAV*/
-
-.sidenav{
-    height: 100vh;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 56px;
-    right: 0;
-    background-color: var(--bg);
-    overflow-x: hidden;
-    transition: 0.5s;
-}
-
-.sidenav.active{
-    width: 20%;
-}
-
-.sidenav .container{
-    border-top: 3px solid var(--overlay);
-    width: 90%;
-    display: flex;
-}
-
-.sidenav .container i{
-    margin-left: auto;
-    margin-right: 0;
-    padding: 1rem;
-    color: var(--main);
-    font-size: 3rem;
-}
-
-.sidenav h1{
+.copy{
     text-align: center;
+}
+
+/*TEAM*/
+
+#team h2{
+    text-align: center;
+    margin-top: 1rem;
     color: var(--title);
-    font-size: 2rem;
 }
 
-.sidenav ul{
-    padding: 1rem;
-    list-style-type: none
-}
-
-.sidenav ul li a{
-    text-decoration: none;
-    color: var(--white);
-}
-
-.sidenav ul li a:hover{
-    color: var(--main);
-}
-
-.sidenav ul li .adminAction{
-    display: none;
-}
-
-.sidenav ul li .adminAction.active{
-    display: block;
-}
-
-/*END SIDENAV*/
-
-/*START TEAMS*/
-
-#teams, .container-fluid{
+.container-fluid{
     margin-top: 4rem;
 }
 
-#teams h1{
-    margin: 0 auto;
-    color: var(--title);
-    text-align: center;
+.flipper{
+    perspective: 1000px;
+    padding: 1.4rem 0;
 }
 
-.team-card {
+.team-card{
     text-align: center;
     transition: 0.6s;
     transform-style: preserve-3d;
-    border: 3px solid var(--black);
+    border: 3px solid #000;
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
-}
-
-.flipper {
-    perspective: 1000px;
-    padding: 1.4rem 0;
 }
 
 .flipper.flip .team-card {
@@ -214,13 +142,17 @@ header{
     transform: rotateY(0deg);
 }
 
+.front h3{
+    font-size: 1.25rem;
+}
+
 .front img, .front h3, .back h3{
     margin-top: 1rem;
 }
 
 .front img{
-    max-width: 240px;
-    max-height: 240px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 .back{
@@ -230,25 +162,26 @@ header{
     transform: rotateY(180deg);
 }
 
-.front p, .back p{
-    color:var(--black);
-    font-size:1.7rem;
+.container{
+    height: 190px;
+    overflow: auto;
 }
 
-.back .carousel-item{
-    margin-top: 1rem;
+.container::-webkit-scrollbar{
+    display: none;
 }
 
-.back .carousel-item i{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+.palmares{
+    margin: 0 5px;
+}
+
+.back i{
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
     background-color: var(--title);
-    font-size: 8rem;
+    font-size: 2rem;
+    line-height: 1.5;
 }
 
 #gold{
@@ -271,725 +204,24 @@ header{
     color: #ff0000;
 }
 
-/*END TEAMS*/
-
-/*START BAD LUCK*/
-
-#bad-luck{
-    margin-top: 4rem;
-}
-
-#bad-luck h1{
-    margin: 0 auto;
-    color: var(--title);
-    text-align: center;
-    text-transform: none;
-}
-
-.bl-container img{
-    display: block;
-    margin: 4rem auto;
-}
-
-
-.bl-container .carousel, .inputBox .comment{
-    display: block;
-    width: 70%;
-    height: 150px;
-    border-radius: 10px;
-}
-
-.bl-container .carousel{
-    text-align: center;
-    margin: 2rem auto;
-    background: linear-gradient(21deg, var(--main), var(--title));
-    padding: 0.3rem;
-    line-height: 150px;
-    box-shadow: 0 0 10px 10px rgba(22,119,171,0.5);
-}
-
-.bl-container .carousel-inner{
-    background: #fff;
-    height: 144px;
-    border-radius: 10px;
-}
-
-.bl-container .carousel-item p{
-    line-height: 1.5;
-    display: inline-block;
-    vertical-align: middle;
-    color: var(--par);
-    font-size: 1rem;
-    text-transform: none;
-}
-
-.inputBox{
-    display: block;
-    margin: 2rem auto;
-}
-
-.inputBox h3{
-    margin: 0 auto;
-    color: var(--par);
-    text-align: center;
-}
-
-.inputBox .comment{
-    margin: 3rem auto;
-    box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
-    text-transform: none;
-}
-
-.comment::placeholder{
-    padding: 0.5rem;
-}
-
-.comment[type="text"] {
-    padding: 1rem;
-}
-
-.btn{
-    display: block !important;
-    margin: 1rem auto;
-    width: 100px;
-    color: var(--main);
-    background-color: var(--black);
-    text-transform: capitalize;
-
-}
-
-.btn:hover{
-    background-color: var(--main);
-    color: var(--black);
-}
-
-/*END BAD LUCK*/
-
-/*START FOOTER*/
+/*FOOTER*/
 
 footer{
-    background-color: var(--bg);
-}
-
-.box-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    font-size: 1.1rem;
-}
-
-.box-container .box{
-    flex: 1 1 20rem;
-    padding: 2rem;
-}
-
-.box-container .box h3{
-    color: var(--white);
-}
-
-.box-container .box p{
-    color: var(--light-bg);
-}
-
-.box-container .box a{
-    color: var(--main);
-    display: block;
-    padding-top: 1rem;
-    text-decoration: none;
-}
-
-.box-container .box a:hover{
-    color: var(--title);
-    text-decoration: none;
-}
-
-.box-container .box a i{
-    padding-right: 1rem;
-}
-
-footer .copy{
-    position:absolute;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    width: 100%;
-    text-transform: lowercase;
-}
-
-/*END FOOTER*/
-
-/*START LOGIN*/
-
-#user{
-    display: flex;
-    min-height: 100vh;
-}
-
-#user .box{
-    margin: 5rem;
-    background: var(--white);
-    border: 3px solid var(--black);
-    border-radius: 10px;
-    display: block;
-    flex: 1 1 0px;
-}
-
-#user .box h1{
-    color: var(--title);
-    text-transform: uppercase;
-    padding-top: 1rem;
-    font-size: 2rem;
-    text-align: center;
-}
-
-#user .box form{
-    padding: 2rem;
-    margin-top: 1rem;
-}
-
-input{
-    width: 100%;
-    margin-bottom: 2rem;
-    background: var(--light-bg);
-    height: 3rem;
-    font-size: 1rem;
-    border-radius: 10px;
-}
-
-input::placeholder{
-    padding: 0.5rem;
-    color: var(--black);
-}
-
-input[type="text"], input[type="password"] {
-    padding-left: 1rem;
-}
-
-#user .box form .btn-r, #user .box form .btn-l{
-    margin-right: 0;
-    margin-left: auto;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#user .box form a{
-    display: block;
-    text-align: end;
-    color: var(--par);
-    text-decoration: none;
-}
-
-
-#user .box form a:hover{
-    color: var(--black);
-}
-
-/*END LOGIN*/
-
-/*START ACCOUNT*/
-
-.user{
-    display: grid;
-    grid-template-columns: 30% 70%;
-    padding: 4rem 9%;
-}
-
-.user-graphic{
-    display: block;
-    background-color: var(--light-bg);
-    text-align: center;
-}
-
-.user-graphic img{
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border: 3px solid #000;
-    margin-top: 1rem;
-}
-
-.user-graphic .xp-bar{
-    margin: 1rem auto;
-    width: 200px;
-    display: flex;
-    margin-bottom: 0;
-}
-
-.user-graphic .xp-bar .xp-bar-bg{
-    height: 5px;
-    background-color: var(--xp-bg);
-    width: 100%;
-    margin: auto 0;
-}
-
-.user-graphic .xp-bar .xp-bar-active{
-    height: 5px;
-    background-color: var(--xp-active);
-    width: 0;
-}
-
-.user-graphic .xp-bar .level{
-    margin-left: 1rem;
-    font-size: 1.5rem;
-    color: var(--xp-bg);
-}
-
-.user-graphic .xp-bar-value{
-    font-size: 1.3rem;
-}
-
-.user-graphic .xp-bar-value .value{
-    color: var(--xp-active);
-}
-
-.user-graphic .xp-bar-value .max-value{
-    color: var(--xp-bg);
-}
-
-.user-graphic .user-title{
-    color: var(--par);
-    font-size: 1.3rem;
-    font-style: italic;
-    border-top: 1px solid var(--bg);
-    width: 70%;
-    text-align: center;
-    margin: 1rem auto;
-}
-
-.user-data{
-    padding: 3rem;
-}
-
-.user-data .info{
-    display: flex;
-    align-items: center;
-}
-
-.user-data .info .text-info .name{
-    color: var(--title);
-    font-size: 4rem;
-}
-
-.user-data .info .text-info .coins{
-    margin-top: 1rem;
-    font-size: 1.5rem;
-}
-
-.user-data .info .text-info .coins i{
-    color: var(--main);
-    margin-left: 0.5rem;
-}
-
-.drop-area{
-    margin-left: auto;
-    border: 2px dashed #ccc;
-    border-radius: 20px;
-    width: 400px;
-    padding: 1rem 2rem;
-}
-
-.drop-area form p{
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 400;
-}
-
-.drop-area form input{
-    background-color: var(--blue-bg);
-}
-
-.drop-area form input::file-selector-button {
-    display: none;
-}
-
-.user-trophy h1{
-    color: var(--title);
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.user-trophy .carousel-item{
-    margin-top: 2rem;
-}
-
-.user-trophy .carousel-item i{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    background-color: var(--bg);
-    font-size: 8rem;
-}
-
-.user-trophy .carousel-item p{
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 1.7rem;
-}
-
-.user-tab{
-    padding: 0 2rem;
-}
-
-.user-tab .tab {
-    overflow: hidden;
-    border-bottom: 1px solid var(--title);
-}
-
-.user-tab .tab button {
-    cursor: pointer;
-    padding: 1rem 2rem;
-    transition: 0.3s;
-    color: var(--title);
-    background-color: var(--light-bg);
-    border-top-right-radius: 10px;
-}
-
-.user-tab .tab button:hover {
-    background-color: var(--bg);
-}
-
-.user-tab .tab button.active {
-    background-color: var(--bg);
-}
-
-.user-tab .tabcontent{
-    display: none;
-}
-
-.user-tab .tabcontent.active {
-    display: block;
-    padding: 1rem 0;
-}
-
-.user-tab .data .input-row{
-    display: grid;
-    grid-template-columns: 15% 80% 5%;
-    margin: 1rem 0;
-}
-
-.user-tab .data .input-row h4{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-}
-
-.user-tab .data .input-row input{
-    margin-bottom: 0;
-    width: auto;
-}
-
-.user-tab .data .input-row i{
-    position: relative;
-    text-align: center;
-    line-height: 3;
-    left: -2.5rem;
-}
-
-.carousel-indicators{
-    bottom: 0!important;
-    margin-bottom: 0.3rem !important;
-}
-
-.user-tab .customs-slide .carousel-indicators li{
-    background: var(--black);
-}
-
-.user-tab .customs-slide .carousel-indicators li.active{
-    box-shadow: 0 0 5px 5px rgba(0,0,0,0.3);
-}
-
-.user-tab .customs-slide a{
-    opacity: 1!important;
-    width: 20px !important;
-    display: block;
-    top: 42% !important;
-}
-
-.user-tab .customs-slide a span{
-    background-color: var(--black);
-    height: 60px !important;
-}
-
-.user-tab .custom .container-fluid{
-    margin-top: 0;
-    padding: 0;
-}
-
-.user-tab .custom .element{
     padding: 1rem;
-    background-color: var(--blue-bg);
-    text-align: center;
 }
 
-
-.user-tab .custom .element:nth-child(2),
-.user-tab .custom .element:nth-child(4),
-.user-tab .custom .element:nth-child(5),
-.user-tab .custom .element:nth-child(7),
-.user-tab .custom .element:nth-child(10),
-.user-tab .custom .element:nth-child(12){
-    background-color: var(--light-bg);
+.footer-item h3{
+    color: #fff;
 }
 
-.user-tab .custom .element .img-container{
-    position:relative;
-    display:inline-block;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    border: 1px solid var(--black);
-    border-radius: 50%;
+.footer-item p{
+    color: #ddd;
 }
 
-.user-tab .custom .element .img-container img{
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-.user-tab .custom .element .img-container .hover{
-    transition: .5s ease;
-    opacity: 0;
-    width: 70px;
-    position:absolute;
-    bottom:50%;
-    right:50%;
-    height:40px;
-    margin:0px -35px -20px 0px;
-}
-
-.user-tab .custom .element .img-container:hover img {
-    opacity: 0.5;
-}
-
-.user-tab .custom .element .img-container:hover .hover {
-    opacity: 1;
-}
-
-.user-tab .custom .element .img-container .hover .btn i{
+.footer-item a{
     color: var(--main);
-    margin-left: 0.5rem;
 }
 
-.user-tab .custom .element .img-container .hover .btn:hover i{
-    color: var(--black);
+.footer-item a:hover{
+    color: var(--title);
 }
-
-.user-tab .custom .element p{
-    text-align: center;
-    margin: 0;
-    color: var(--black);
-    font-weight: 400;
-}
-
-.user-tab .custom .element .hline{
-    margin: 0;
-    border: 1px solid var(--title);
-    margin: 0.2rem auto 0 auto;
-    width: 50%;
-}
-
-/*END ACCOUNT*/
-
-/*START ADMIN*/
-.admin-panel{
-    padding: 10rem 9%;
-}
-
-.admin-panel .forms{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.5rem;
-}
-
-.admin-panel .trophy-form select, .admin-panel .trophy-form select option{
-    font-family: 'FontAwesome', sans-serif;
-}
-
-.admin-panel .drop-area{
-    margin: 5rem auto;
-}
-
-/*END ADMIN*/
-
-/*START MOBILE*/
-
-@media screen and (max-width:1500px){
-
-    .front h3{
-        font-size: 1.3rem;
-    }
-}
-
-@media screen and (max-width:1200px){
-
-    .back .carousel-item{
-        margin-top: 5rem;
-    }
-
-    .user-tab .data .input-row{
-        display: block;
-    }
-
-    .user-tab .data .input-row input{
-        width: 100%;
-    }
-
-    .user-tab .data .input-row i{
-        left: 90%;
-        top: -3rem;
-    }
-
-    .admin-panel .forms{
-        display: block;
-        text-align: center;
-    }
-
-    .admin-panel .forms form{
-        margin: 1rem auto;
-    }
-}
-
-@media screen and (max-width:991px){
-
-    .user{
-        display: block;
-    }
-
-    .user-data .info{
-        padding-top: 1rem;
-        text-align: center;
-        display: block;
-    }
-
-    .drop-area{
-        margin: 2rem auto;
-    }
-
-    .user-tab .custom .element:nth-child(even){
-        background-color: var(--light-bg);
-    }
-
-    .user-tab .custom .element:nth-child(odd){
-        background-color: var(--blue-bg);
-    }
-}
-
-@media screen and (max-width:768px){
-
-
-    .description h1{
-        font-size: 2rem;
-    }
-
-    .description p{
-        font-size: 1rem;
-    }
-
-    #user{
-        display: block;
-    }
-
-    .sidenav.active{
-        width:50%;
-    }
-
-    .xp-bar{
-        width: 200px;
-    }
-
-    .user-tab .tab button{
-        padding: 0.5rem 1.48rem;
-    }
-
-    .user-tab .tabcontent.custom{
-        padding: 1rem 0;
-    }
-
-    .user-tab .custom .container-fluid{
-        padding-right: 0;
-    }
-
-    .user-tab .custom .element:nth-child(1),
-    .user-tab .custom .element:nth-child(4),
-    .user-tab .custom .element:nth-child(5),
-    .user-tab .custom .element:nth-child(8),
-    .user-tab .custom .element:nth-child(9),
-    .user-tab .custom .element:nth-child(12){
-        background-color: var(--blue-bg);
-    }
-
-    .user-tab .custom .element:nth-child(2),
-    .user-tab .custom .element:nth-child(3),
-    .user-tab .custom .element:nth-child(6),
-    .user-tab .custom .element:nth-child(7),
-    .user-tab .custom .element:nth-child(10),
-    .user-tab .custom .element:nth-child(11){
-        background-color: var(--light-bg);
-    }
-
-}
-
-@media screen and (max-width:576px){
-    .user-tab .custom .element{
-        width: 50%;
-    }
-
-    .drop-area{
-        width: 300px;
-    }
-}
-
-@media screen and (max-width:475px){
-
-    .description h1{
-        font-size: 1.5rem;
-    }
-
-    .description p, footer p{
-        font-size: 0.8rem;
-    }
-
-    .back .carousel-item .icon-box{
-        width: 150px;
-        height: 150px;
-        font-size: 7.5rem;
-    }
-
-    .back .carousel-item{
-        margin-top: 0;
-    }
-
-    .inputBox .comment{
-        height: 100px;
-    }
-
-    .box form a{
-        float: none;
-    }
-
-    .sidenav.active{
-        width:100%;
-    }
-
-    .user-tab .data .input-row i{
-        left: 85%;
-    }
-
-    .drop-area{
-        width: auto;
-        margin: 2rem 0;
-    }
-
-    .admin-panel .forms .team-form{
-        font-size: 1.3rem;
-    }
-
-}
-
-
