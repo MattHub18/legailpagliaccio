@@ -78,9 +78,15 @@ form .btn:hover{
 header{
     --overlay: rgba(244, 244, 244, 0.5);
     min-height: 100vh;
-    background: linear-gradient(var(--overlay), var(--overlay)), url("../img/logo.png") fixed center;
+    background: linear-gradient(var(--overlay), var(--overlay)), url("../img/logo.png");
+    background-position: center;
     background-size: cover;
 }
+
+/*
+background: linear-gradient(var(--overlay), var(--overlay)), url("../img/logo.png") fixed center;
+    background-size: cover;
+*/
 
 .description {
     margin: 0 20%;
