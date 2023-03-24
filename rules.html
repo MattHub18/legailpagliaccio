@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lega il Pagliaccio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="fantacalcio">
+    <meta name="keywords" content="fantacalcio">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">
+        <img src="img/small-logo.png" alt="Brand"/>
+    </a>
+
+    <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html#team">Squadre</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#rules">Regole</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" id="user" href="#"><i class="fas fa-user"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--Login-->
+<div class="login-container" id="login">
+    <a id="login-close" href="#"><i class="fas fa-times"></i></a>
+    <form class="bg-dark">
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp"
+                   placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btn">Login</button>
+    </form>
+</div>
+<!--Rules-->
+<section id="rules">
+    <ul>
+        <li>
+            <h3><i class="fas fa-futbol"></i> Classifica:</h3>
+            <p>In caso di parit&agrave; di punti i prossimi parametri, nell'ordine, sono: punteggio, differenza
+                reti.</p>
+        </li>
+        <li>
+            <h3><i class="fas fa-futbol"></i> Crediti Disponibili:</h3>
+            <p>500 crediti dati a inizio competizione + 50 all'asta di riparazione.</p>
+            <p>Se qualcuno sfora i crediti alle aste perde 2 punti per ogni credito sforato ma si tiene il
+                giocatore.</p>
+            <p>I crediti verranno poi sottratti ai 50 dati all'asta di riparazione.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Dimensione e struttura della rosa:</h3>
+            <p>La rosa prevede 25 calciatori: (3 portieri, 8 difensori, 8 centrocampisti, 6 attaccanti).</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Modalit&agrave; e tempi di consegna delle formazioni:</h3>
+            <p>Modalit&agrave; di consegna: applicazione o messaggio all'admin solo in casi estremi.</p>
+            <p>Tempi di consegna: 15 minuti prima dell'inizio della prima partita.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Moduli consentiti:</h3>
+            <p>352, 343, 451, 442, 433, 532, 523, 541.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Gestione delle formazioni non consegnate:</h3>
+            <p>Lasciare l'utente con zero punti per la giornata in corso.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Struttura della panchina e regole sulle sostituzioni:</h3>
+            <p>Sequenza ruoli e numero: libero; 2P, 3D, 3C, 3A. </p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Tabella Bonus/Malus calciatori:</h3>
+            <p>gol: +3, +4 per portiere</p>
+            <p>gol subito: -1.</p>
+            <p>ammonizione: -0.5.</p>
+            <p>espulsione: -1.</p>
+            <p>rigore fallito: -3.</p>
+            <p>rigore parato: +3.</p>
+            <p>assist: +1.</p>
+            <p>autogol: -2.</p>
+            <p>imbattibilit&agrave; portiere: +1.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> La gestione del calciatore senza voto ammonito:</h3>
+            <p>SV.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Le regole di punteggio:</h3>
+            <p>Punteggio a cui si realizza la prima rete: 66.</p>
+            <p>Ogni quanti punti si realizzano i successivi: 5.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Sostituzioni:</h3>
+            <p>Numero sostituzioni dimsponibili: 3</p>
+            <p>Priorità al modulo.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Modificatore Difesa:</h3>
+            <p>Vale solo se la fantasquadra viene schierata con un numero di difensori pari o superiore a quattro: a
+                concorrere al modificatore sono i voti dei migliori tre difensori schierati, e quello del portiere.</p>
+            <p>I quattro voti vengono mediati aritmeticamente, ed il bonus totale diventa pari a:</p>
+            <p>6 - 6.24: +1.</p>
+            <p>6.25 - 6.49: +2.</p>
+            <p>6.5 - 6.74: +3.</p>
+            <p>6.75 - 6.99: +4.</p>
+            <p>7 - 7.24: +5.</p>
+            <p>7.25: +6.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Votazioni:</h3>
+            <p>Per modificare/aggiungere/cancellare regole serve una decisione unanime.</p>
+            <p>Le regole non si votano due volte.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Le regole di mercato:</h3>
+            <p>Il numero delle sessioni di mercato: 2 asta e asta di riparazione.</p>
+            <p>Le tipologie di mercato: asta: chiamata. Asta di riparazione: chiamata, lista di svincolati (immutabile)
+                2 giorni prima dell'asta. Si possono riprendere i propri giocatori svincolati partendo dal prezzo di
+                svincolo.</p>
+            <p>Scambi: solo nelle pause nazionali o durante le sessioni di mercato fantacalcistico. Non si pu&ograve;
+                riprendere un giocatore scambiato. Gli scambi si fanno con il valore che segue il giocatore.</p>
+            <h3><i class="fas fa-futbol"></i> Il recupero dei crediti:</h3>
+            <p>Gli svincoli volontari: sono quelli che l'utente fa volontariamente, sostituendo nella propria rosa un
+                calciatore che continua a militare regolarmente in Serie A. Crediti recuperati: la met&agrave;
+                superiore.</p>
+            <p>Gli svincoli obbligati: si verificano quando un calciatore in rosa abbandona (trasferimento di mercato o
+                risoluzione di contratto) la Serie A. Crediti recuperati: totale.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> La gestione delle partite rinviate:</h3>
+            <p>Attenzione: le partite giocate nel lasso di tempo intercorrente tra la fine del turno precedente e
+                l'inizio del successivo rispetto a quello in corso di svolgimento, non vanno considerate anticipi o
+                posticipi anomali.</p>
+            <p>6 politico fino a tre partite, sopra si annulla la giornata.</p>
+            <p>Se una partita viene confermata rinviata prima dello scadere del tempo dell'invio delle formazioni, i
+                giocatori indisponibili vengono considerati come senza voto.</p>
+        </li>
+        <li>
+            <h3><i class="fas fa-futbol"></i> Coppa:</h3>
+            <p>2 gironi da 4 squadre casuali, andata e ritorno. Passano le prime 2 di ogni girone(in caso di parità si
+                va a vedere la somma punteggi).</p>
+            <p>In semifinale le squadre si scontrano a incrocio, andata e ritorno (in caso di pareggio si guarda il
+                fattore campo).</p>
+            <p>La finale si decide a rigori in caso di parità.</p>
+        </li>
+
+        <li>
+            <h3><i class="fas fa-futbol"></i> Le quote di partecipazione e i premi:</h3>
+            <p>15 di quota.</p>
+            <h3><i class="fas fa-futbol"></i> Premi finali:</h3>
+            <p>1&deg; classificato: 60.</p>
+            <p>2&deg; classificato: 30.</p>
+            <p>3&deg; classificato: 15.</p>
+            <p>Vincitore coppa: 15.</p>
+        </li>
+    </ul>
+</section>
+<!--footer-->
+<footer class="bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="footer-item">
+                    <h3>About Us</h3>
+                    <p>Siamo otto ragazzi uniti da una lunga amicizia e appassionati di fantacalcio.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12">
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-right-long"></i> Home</a></li>
+                        <li><a href="index.html#team"><i class="fas fa-right-long"></i> Squadre</a></li>
+                        <li><a href="#rules"><i class="fas fa-right-long"></i> Regole</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12">
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://leghe.fantacalcio.it/lega-il-negro"><i class="fas fa-hat-wizard"></i> La nostra lega</a></li>
+                        <li><a href="https://www.instagram.com/legailpagliaccio/"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>

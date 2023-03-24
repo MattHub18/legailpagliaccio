@@ -225,3 +225,10 @@ footer{
 .footer-item a:hover{
     color: var(--title);
 }
+
+/*RULES*/
+
+#rules{
+    width: 90%;
+    margin: 100px auto;
+}
