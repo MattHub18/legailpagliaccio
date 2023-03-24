@@ -1,28 +1,17 @@
 const makeCards = (username, teamName, teamLogo, trophies) => {
 
-    let palmares ="";
+    let palmares = "";
     for (let trophy of trophies) {
         let className;
         let type = trophy['type'];
-        switch(type){
-            case "gold":
-                className = "fa-medal";
-                break;
-            case  "silver":
-                className = "fa-medal";
-                break;
-            case "bronze":
-                className = "fa-medal";
-                break;
-            case "trophy":
-                className = "fa-trophy";
-                break;
-            default:
-                className = "fa-ban";
-                break;
-        }
+        if (type === "gold" || type === "silver" || type === "bronze")
+            className = "fa-medal";
+        else if (type === "trophy")
+            className = "fa-trophy";
+        else
+            className = "fa-ban";
 
-        palmares+=
+        palmares +=
             `<div class="palmares col-xs-3">
                 <i class="fas ${className}" id=${type}></i>
                 <p>${trophy['date']}</p>
@@ -46,21 +35,18 @@ const makeCards = (username, teamName, teamLogo, trophies) => {
                 </div>
             </div>
         </div>`;
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     firebase.database().ref("users").on("value", (snapshot) => {
         const users = snapshot.val();
         if(users){
             for (const [username, user] of Object.entries(users)) {
-            const teamName = user['teamName'];
-            const teamLogo = user['teamLogo'];
+                const trophies = [];
+                for (const [, value] of Object.entries(user['trophies']))
+                    trophies.push(value);
 
-            const trophies = [];
-            for (const [, value] of Object.entries(user['trophies']))
-                trophies.push(value);
-
-            makeCards(username, teamName, teamLogo, trophies);
+                makeCards(username, user['teamName'], user['teamLogo'], trophies);
             }
 
             [].forEach.call(document.querySelectorAll('.flipper'), function (el) {
@@ -69,18 +55,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-    });
-
-    document.getElementById('user').addEventListener('click', () => {
-        document.getElementById('toggler').click();
-        document.getElementById('login').classList.toggle('active');
-    });
-
-    document.getElementById('login-close').addEventListener('click', () => {
-        document.getElementById('login').classList.remove('active');
-    });
-
-    document.getElementById('btn').addEventListener('click', () => {
-        alert("todo log in db");
     });
 });
