@@ -232,3 +232,7 @@ footer{
     width: 90%;
     margin: 100px auto;
 }
+
+#rules p{
+    margin-left: 40px;
+}
