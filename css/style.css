@@ -30,7 +30,7 @@
 
 .login-container{
     position: fixed;
-    top: -100%;
+    top: -150%;
     left: 0;
     z-index: 10000;
     min-height: 100vh;
