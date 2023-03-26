@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.innerWidth >= 768)
         toggler.click()
 
+    let indexLastActive = -1;
+
     firebase.database().ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
         if (users) {
@@ -62,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         user.classList.remove('active')
                     });
                     user.classList.toggle('active');
+                    indexLastActive = index;
                     document.getElementById('user-icon').src = user.children[0].src;
                     document.getElementById('username').value = usersList[index];
                     document.getElementById('teamName').value = user.innerText;
@@ -85,8 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         })
                     });
                 });
-                if (index === 0)
-                    user.click();
+                if (indexLastActive=== -1){
+                    if(index === 0)
+                        user.click();
+                }
+                else
+                    document.querySelectorAll('.users')[indexLastActive].click();
+
             });
 
             document.getElementById('add-team-btn').addEventListener('click', (e) => {
