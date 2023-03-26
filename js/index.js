@@ -1,22 +1,6 @@
 const makeCards = (username, teamName, teamLogo, trophies) => {
 
-    let palmares = "";
-    for (let trophy of trophies) {
-        let className;
-        let type = trophy['type'];
-        if (type === "gold" || type === "silver" || type === "bronze")
-            className = "fa-medal";
-        else if (type === "trophy")
-            className = "fa-trophy";
-        else
-            className = "fa-ban";
-
-        palmares +=
-            `<div class="palmares col-xs-3">
-                <i class="fas ${className}" id=${type}></i>
-                <p>${trophy['date']}</p>
-            </div>`;
-    }
+    let palmares = getPalmares(trophies, `<div class="palmares col-xs-3">`, "");
 
     document.getElementById("row").innerHTML +=
         `<div class="flipper col-xl-3 col-md-6 col-sm-12">
@@ -41,10 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
     firebase.database().ref("users").on("value", (snapshot) => {
         const users = snapshot.val();
         if(users){
+            document.getElementById("row").innerHTML = "";
             for (const [username, user] of Object.entries(users)) {
                 const trophies = [];
-                for (const [, value] of Object.entries(user['trophies']))
-                    trophies.push(value);
+                const hasTrophies = user['trophies'];
+                if(hasTrophies) {
+                    for (const value of Object.entries(hasTrophies))
+                        trophies.push(value);
+                }
 
                 makeCards(username, user['teamName'], user['teamLogo'], trophies);
             }

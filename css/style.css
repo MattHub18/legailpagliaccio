@@ -18,11 +18,11 @@
 
 /*NAVBAR*/
 
-.collapse .navbar-nav .nav-item .nav-link, .sidebar-nav .nav-item .nav-link{
+.collapse .navbar-nav .nav-item .nav-link, .sidebar .sidebar-nav .nav-item .nav-link{
     color: var(--main);
 }
 
-.collapse .navbar-nav .nav-item .nav-link:hover{
+.collapse .navbar-nav .nav-item .nav-link:hover, .sidebar .sidebar-nav .nav-item .nav-link:hover{
     color: var(--title);
 }
 
@@ -235,4 +235,187 @@ footer{
 
 #rules p{
     margin-left: 40px;
+}
+
+/*DASHBOARD*/
+
+.admin-panel{
+    display: flex;
+    width: 100%;
+}
+
+.sidebar{
+    width: 75px;
+    height: 100vh;
+}
+
+.sidebar.active{
+    width: 150px;
+}
+
+.sidebar .sidebar-toggler{
+    display: block;
+    margin: 50px auto 0;
+    border: 1px solid #000;
+    background-color: transparent;
+    color: #fff;
+}
+
+.sidebar-toggler i{
+    font-size: 1.5rem;
+}
+
+.sidebar .sidebar-nav{
+    margin: 50px 0;
+}
+
+.sidebar .sidebar-nav .nav-item{
+    text-align: center;
+}
+
+.sidebar.active .nav-link{
+    display: block;
+    font-size: 1rem;
+}
+
+.sidebar.active .nav-link .icon{
+    display: none;
+}
+
+.sidebar .nav-link{
+    font-size: 0;
+}
+
+.sidebar .nav-link .add-team .icon{
+    display: block;
+}
+
+.sidebar .icon{
+    font-size: 1.5rem;
+}
+
+.sidebar .nav-link img.icon{
+    width: 21px;
+    height: 21px;
+    margin: 1px 10px;
+}
+
+.sidebar .nav-item:nth-child(2){
+    margin-top: 10px;
+}
+
+.sidebar .sidebar-nav .new-team .icon, .sidebar .sidebar-nav .new-team .add-team{
+    color: var(--title);
+}
+
+.sidebar .sidebar-nav .new-team{
+    border: #000 1px solid;
+}
+
+.sidebar .sidebar-nav .new-team:hover{
+    background-color: var(--title);
+}
+
+.sidebar .sidebar-nav .new-team:hover .icon, .sidebar .sidebar-nav .new-team:hover .add-team{
+    color: var(--main);
+}
+
+#dashboard{
+    width: 70%;
+    margin: 0 auto;
+    height: 100vh;
+    overflow: auto;
+}
+
+.user-icon{
+    width: 200px;
+    height: 200px;
+}
+
+.user-info label{
+    color: #000;
+}
+
+.save{
+    margin-top: 40px;
+}
+
+#trophies{
+    padding: 0 15px
+}
+
+.trophies{
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px 0;
+    overflow-x: auto;
+    border: #000 1px solid;;
+}
+
+.trophies::-webkit-scrollbar{
+    display: none;
+}
+
+.trophy{
+    margin: 10px 10px 10px 0;
+    width: 100px;
+    height: 100px;
+}
+
+.fas.fa-minus.del-t{
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    color: #000;
+    text-align: center;
+    line-height: 1.3;
+    margin: 5px 0 0 -5px;
+}
+
+.trophy #gold, .trophy #silver, .trophy #bronze, .trophy #trophy{
+    width: 80px;
+    height: 80px;
+    border-radius: 25%;
+    background-color: var(--title);
+    font-size: 3.5rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#trophy-add{
+    border: #abcdef 4px dashed;
+    background-color: #5d8aa8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#trophy-add i{
+    color: #abcdef;
+    font-size: 2rem;
+}
+
+.del, .sve{
+    width: 100%;
+}
+
+.radio-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-buttons .form-group{
+    margin: 0 20px;
+}
+
+.radios label{
+    color: #000;
+}
+
+.dropdown-menu{
+    width: 90%;
 }

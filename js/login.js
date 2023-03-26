@@ -10,12 +10,14 @@ const resetInput = (input, placeholder) =>{
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('user').addEventListener('click', () => {
+    document.getElementById('user').addEventListener('click', (e) => {
+        e.preventDefault();
         document.getElementById('toggler').click();
         document.getElementById('login').classList.toggle('active');
     });
 
-    document.getElementById('login-close').addEventListener('click', () => {
+    document.getElementById('login-close').addEventListener('click', (e) => {
+        e.preventDefault();
         document.getElementById('login').classList.remove('active');
     });
 
@@ -25,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resetInput(username, 'username');
     resetInput(password, 'password');
 
-    document.getElementById('btn').addEventListener('click', () => {
+    document.getElementById('btn').addEventListener('click', (e) => {
+        e.preventDefault();
         let empty = false;
 
         if(username.value ===""){
@@ -45,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if(admin){
                 const pswEnc = admin['password'];
                 if(window.atob(pswEnc)===password.value){
-                    location.replace("dashboard.html");
                     document.cookie = "admin=active";
+                    location.replace("dashboard.html");
                 }
                 else
                     alert('wrong username/password');
