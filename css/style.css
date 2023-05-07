@@ -84,7 +84,7 @@ header{
 
 .description {
     margin: 0 20%;
-    padding: 15rem 0;
+    padding: 24rem 0;
 }
 
 .description h1{
@@ -98,7 +98,10 @@ header{
 }
 
 .copy{
+    position: absolute;
+    bottom: 0;
     text-align: center;
+    width: 100%;
 }
 
 /*TEAM*/
@@ -385,15 +388,13 @@ footer{
     text-align: center;
 }
 
-#trophy-add{
+#trophy-add i{
+    width: 80px;
+    height: 80px;
     border: #abcdef 4px dashed;
     background-color: #5d8aa8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#trophy-add i{
+    line-height: 2.3;
+    text-align: center;
     color: #abcdef;
     font-size: 2rem;
 }

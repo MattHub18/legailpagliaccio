@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     trophies.innerHTML +=
                         `<div id="trophy-add" class="trophy" data-toggle="modal" data-target="#modal">
                                <i class="fas fa-plus trophy-icon"></i>
+                               <p>Add trophy</p>
                         </div>`;
 
                     [].forEach.call(document.querySelectorAll('.del-t'), (del) => {
