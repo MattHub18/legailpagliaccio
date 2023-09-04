@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById('upload').addEventListener("change", (e) => {
         let file = e.target.files[0];
-        let storageRef = firebase.storage().ref('img/teams/');
+        let storageRef = firebase.storage().ref(`img/teams/${file.name}`);
         storageRef.put(file).then(() => {
             storageRef.getDownloadURL().then((downloadURL) => {
                 document.getElementById('user-icon').src = downloadURL;
