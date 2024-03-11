@@ -28,28 +28,7 @@
 
 /*LOGIN*/
 
-.login-container{
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    z-index: 10000;
-    min-height: 100vh;
-    width: 100%;
-    background: rgba(0,0,0,0.7);
-}
-
-.login-container.active{
-    top: 0;
-}
-
-.login-container form{
-    margin: 5rem auto;
-    padding: 1.5rem 2rem;
-    border-radius: 0.5rem;
-    width: 60%;
-}
-
-form label{
+.modal-title, .close span, form label{
     color: #fff;
 }
 
@@ -62,15 +41,6 @@ form .btn{
 
 form .btn:hover{
     background-color: var(--title);
-}
-
-#login-close{
-    position: absolute;
-    top: 2rem;
-    right: 3rem;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
 }
 
 /*HEADER*/

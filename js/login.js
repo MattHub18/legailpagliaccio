@@ -10,16 +10,6 @@ const resetInput = (input, placeholder) =>{
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('user').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('toggler').click();
-        document.getElementById('login').classList.toggle('active');
-    });
-
-    document.getElementById('login-close').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('login').classList.remove('active');
-    });
 
     const username = document.getElementById('inputUsername');
     const password = document.getElementById('inputPassword');
