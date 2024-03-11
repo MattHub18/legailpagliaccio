@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetInput(username, 'username');
     resetInput(password, 'password');
 
-    document.getElementById('btn').addEventListener('click', (e) => {
+    document.getElementById('login-btn').addEventListener('click', (e) => {
         e.preventDefault();
         let empty = false;
 

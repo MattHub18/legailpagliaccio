@@ -76,7 +76,7 @@
                 </div>
                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="modalTitle">Insert Trophy</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -84,8 +84,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="radios">
-                                    <form class="radio-buttons">
+                                <form>
+                                    <div class="radios">
                                         <div class="form-group">
                                             <input type="radio" name="trophy" class="form-control" id="trophy-g" value="Gold">
                                             <label for="trophy-g">Gold</label>
@@ -102,21 +102,18 @@
                                             <input type="radio" name="trophy" class="form-control" id="trophy-t" value="Trophy">
                                             <label for="trophy-t">Trophy</label>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="dates">
-                                    <form>
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button id="add-trophy" type="button" class="btn btn-success" data-dismiss="modal">Add Trophy</button>
+                                    </div>
+                                    <div class="dates">
+                                        <select id="dropdown-menu">
+                                            <option class="dropdown-item" selected="selected">Select year</option>
+                                        </select>
+                                        <label for="dropdown-menu">Date</label>
+                                    </div>
+                                    <div class="controls">
+                                        <button type="button" class="btn add-trophy-btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button id="add-trophy" type="button" class="btn add-trophy-btn btn-success" data-dismiss="modal">Add Trophy</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

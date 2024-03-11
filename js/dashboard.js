@@ -13,9 +13,9 @@ function getCookie() {
     return "";
 }
 
-if (getCookie() === "")
+/*if (getCookie() === "")
     location.replace("index.html");
-
+*/
 document.addEventListener("DOMContentLoaded", () => {
 
     const toggler = document.getElementById('toggler');
@@ -148,18 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdown = document.getElementById('dropdown-menu');
     const date = new Date().getFullYear() - 1;
     for (let i = -5; i < 5; i++) {
-        dropdown.innerHTML += `<a class="dropdown-item" href="#">${date + i}-${date +1 + i}</a>`;
+        dropdown.innerHTML += `<option class="dropdown-item" value="${date + i}-${date +1 + i}">${date + i}-${date +1 + i}</option>`;
     }
-
-    const label = dropdown.parentNode.children[0];
-    label.innerHTML = `${date}-${date + 1}`;
-
-    [].forEach.call(document.querySelectorAll('.dropdown-item'), (item) => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            label.innerHTML = item.innerText;
-        });
-    });
 
     document.getElementById('add-trophy').addEventListener('click', (e) => {
         e.preventDefault();
