@@ -13,9 +13,9 @@ function getCookie() {
     return "";
 }
 
-/*if (getCookie() === "")
+if (getCookie() === "")
     location.replace("index.html");
-*/
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const toggler = document.getElementById('toggler');
