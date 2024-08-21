@@ -1,6 +1,25 @@
-const makeCards = (username, teamName, teamLogo, trophies) => {
+function makeCards(username, teamName, teamLogo, trophies) {
 
-    let palmares = getPalmares(trophies, `<div class="palmares col-xs-3">`, "");
+    let showcase = "";
+    for (let trophy of trophies) {
+        let date = trophy.date;
+        let type = trophy.type;
+        let className;
+        if (type === "trophy")
+            className = "fa-trophy";
+        else
+            className = "fa-medal";
+
+        showcase += `<div class="palmares col-xs-3">
+            <i class="fas ${className}"></i>
+            <p>${date}</p>
+            </div>`;
+    }
+
+    if (teamLogo === "")
+        teamLogo = "default";
+
+    teamLogo = "img/teams/" + teamLogo + ".png";
 
     document.getElementById("row").innerHTML +=
         `<div class="flipper col-xl-3 col-md-6 col-sm-12">
@@ -13,35 +32,27 @@ const makeCards = (username, teamName, teamLogo, trophies) => {
                     <h3 class="username">${username}</h3>
                     <div class="container">
                         <div class="row" id="inner-row">
-                            ${palmares}
+                            ${showcase}
                         </div>
                     </div>
                 </div>
             </div>
         </div>`;
-};
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    firebase.database().ref("users").on("value", (snapshot) => {
-        const users = snapshot.val();
-        if(users){
-            document.getElementById("row").innerHTML = "";
-            for (const [username, user] of Object.entries(users)) {
-                const trophies = [];
-                const hasTrophies = user['trophies'];
-                if(hasTrophies) {
-                    for (const value of Object.entries(hasTrophies))
-                        trophies.push(value);
-                }
+    document.getElementById("row").innerHTML = "";
+    for (let user of users) {
+        let username = user.username;
+        let teamName = user.teamName;
+        let teamLogo = user.teamLogo;
+        let trophies = user.trophies;
+        makeCards(username, teamName, teamLogo, trophies);
+    }
 
-                makeCards(username, user['teamName'], user['teamLogo'], trophies);
-            }
-
-            [].forEach.call(document.querySelectorAll('.flipper'), function (el) {
-                el.addEventListener('click', function () {
-                    el.classList.toggle('flip');
-                });
-            });
-        }
+    [].forEach.call(document.querySelectorAll('.flipper'), function (el) {
+        el.addEventListener('click', function () {
+            el.classList.toggle('flip');
+        });
     });
 });
