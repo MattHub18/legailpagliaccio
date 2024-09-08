@@ -18,8 +18,8 @@ const users = [
         }]
     },{
         username: "Bordo",
-        teamLogo: "dybala_leaves",
-        teamName: "Dybala's Leaves",
+        teamLogo: "",
+        teamName: "Team REALE",
         trophies: [{
             date: "2018-2019",
             type: "bronze"
@@ -53,7 +53,7 @@ const users = [
             type: "gold"
         }, {
             date: "2023-2024",
-            trophy: "silver"
+            type: "silver"
         }]
     },{
         username: "Gucci ayy",
@@ -77,7 +77,7 @@ const users = [
             type: "trophy"
         }, {
             date: "2023-2024",
-            trophy: "bronze"
+            type: "bronze"
         }]
     },{
         username: "Prizzi7",
@@ -86,14 +86,14 @@ const users = [
         trophies:[]
     },{
         username: "Ruggez",
-        teamLogo: "",
-        teamName: "LapoLoca",
+        teamLogo: "schersantos",
+        teamName: "M.S. Schersantos",
         trophies: [{
             date: "2020-2021",
             type: "silver"
         }, {
             date: "2023-2024",
-            trophy: "gold"
+            type: "gold"
         }]
     },{
         username: "boncia3",

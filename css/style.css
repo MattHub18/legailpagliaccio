@@ -147,24 +147,20 @@ header{
     line-height: 1.5;
 }
 
-#gold{
+.gold{
     color: #d4af37;
 }
 
-#silver{
+.silver{
     color: #c0c0c0;
 }
 
-#bronze{
+.bronze{
     color: #cd7f32;
 }
 
-#trophy{
+.trophy{
     color: #771cdc;
-}
-
-#none{
-    color: #ff0000;
 }
 
 /*FOOTER*/

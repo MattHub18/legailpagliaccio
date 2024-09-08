@@ -11,7 +11,7 @@ function makeCards(username, teamName, teamLogo, trophies) {
             className = "fa-medal";
 
         showcase += `<div class="palmares col-xs-3">
-            <i class="fas ${className}"></i>
+            <i class="${type} fas ${className}"></i>
             <p>${date}</p>
             </div>`;
     }
