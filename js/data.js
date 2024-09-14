@@ -97,8 +97,8 @@ const users = [
         }]
     },{
         username: "boncia3",
-        teamLogo: "firenze_2_scarsi",
-        teamName: "Firenze 2 Scarsi",
+        teamLogo: "tappami_levante",
+        teamName: "Tappami Levante FC",
         trophies: [{
             date: "2019-2020",
             type: "gold"
