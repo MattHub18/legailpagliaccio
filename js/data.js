@@ -15,6 +15,9 @@ const users = [
         }, {
             date: "2023-2024",
             type: "trophy"
+        },{
+            date: "2024-2025",
+            type: "siver"
         }]
     },{
         username: "Bordo",
@@ -37,6 +40,9 @@ const users = [
         trophies: [{
             date: "2021-2022",
             type: "silver"
+        },{
+            date: "2024-2025",
+            type: "gold"
         }]
     },{
         username: "Fiammafredda",
@@ -78,6 +84,12 @@ const users = [
         }, {
             date: "2023-2024",
             type: "bronze"
+        },{
+            date: "2024-2025",
+            type: "bronze"
+        },{
+            date: "2024-2025",
+            type: "trophy"
         }]
     },{
         username: "Prizzi7",
